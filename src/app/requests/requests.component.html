@@ -1,3 +1,38 @@
-<p>
-  requests works!
-</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card card-nav-tabs" >
+                <div class="card-header">
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                <li routerLinkActive="active">
+                                    <a [routerLink]="['novas']" data-toggle="tab">
+                                        <i class="material-icons">bug_report</i>
+                                        Novas Solicitações
+                                        <div class="ripple-container"></div></a>
+                                </li>
+                                <li routerLinkActive="active">
+                                    <a [routerLink]="['vinculadas']" data-toggle="tab">
+                                        <i class="material-icons">code</i>
+                                        Novas Solicitações Vinculadas
+                                        <div class="ripple-container"></div></a>
+                                </li>
+                                <li routerLinkActive="active">
+                                    <a [routerLink]="['abertos']" data-toggle="tab">
+                                        <i class="material-icons">cloud</i>
+                                        Abertos
+                                        <div class="ripple-container"></div></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-content">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

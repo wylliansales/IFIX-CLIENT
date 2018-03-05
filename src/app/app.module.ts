@@ -1,22 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './app-routing';
 
 import { AppComponent } from './app.component';
-import { ComponentsModule } from './components/components.module';
 import { RequestsComponent } from './requests/requests.component';
+import { LoginComponent } from './security/login/login.component';
+
+import { ComponentsModule } from './components/components.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RequestsComponent
+    RequestsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     ComponentsModule,
-    AppRoutingModule
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]
