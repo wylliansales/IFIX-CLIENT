@@ -1,0 +1,14 @@
+import { Injectable} from '@angular/core';
+import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
+
+@Injectable()
+export class TokenInterceptor implements HttpInterceptor{
+
+    intercept(req: HttpRequest<any>, next: HttpHandler) {
+        const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjM1YzA2ODJhMzQyMzMwNDA0OGE1OGQwMmViOGM4YzNiZDg5MTBhMzgzYmJkYWU3OTAyMGE2MGVjZjA0MDdjNzkwZWJhYzZjODg0MThkZDhmIn0.eyJhdWQiOiI0IiwianRpIjoiMzVjMDY4MmEzNDIzMzA0MDQ4YTU4ZDAyZWI4YzhjM2JkODkxMGEzODNiYmRhZTc5MDIwYTYwZWNmMDQwN2M3OTBlYmFjNmM4ODQxOGRkOGYiLCJpYXQiOjE1MjAzNjg4ODMsIm5iZiI6MTUyMDM2ODg4MywiZXhwIjoxNTUxOTA0ODgzLCJzdWIiOiIxMDEiLCJzY29wZXMiOltdfQ.cmGnADyvSxam3XvBV7N_R-iVYHanDxUml0uuMLmPf-XaKsDmeqIy_od6W6E3givHSE4x2AJFkJP0uTd83u-QzJ17doOE9lHKeQKR24FVTY_LNZ5FKWsqURxldK6fTsybLRess9vwW8JGQXzkyPdyxB2KSWdUxSJ4k6ixfS_pkmzuaVUPpIO6afa0mbSgzHFQzxqLAgXPn2txga7JPkaPrJcZ-8ypNaLkxY4zHnwjaNSBM3uvWDrm68LKQJaxX3zhplQOaLsGhcMJSqtLV-xvvv5c0Fo45bXppKIlP3lejKOQdhmDvjoqpJVfFXChHhgHhHsnbCId0aI1K4horT8SUpOmj6dakFPz75ZICaJFsH2PQqot2LkPMzz3URqTyb87la8AAj5e-EVz8Qg7KAlDUNQWhicIDVQNd3XmyDhrNeBErxTgFUq1Cke6-zuEpIzBC2QoQXCPWdpdJcjZMIpC8Ve9AqkezMFqzpZAUhz2P36PumGLfRvyQAZ2NofhqeBk5JFPyT0AsEFyFADf676acIrpqn5L1YcDl9LJ_piaIybiYVc4KWUm_8cKG_Ylm65w_6x-Ki_32KT2oF0zcCe3WZPpaUjZNrgqKcfN8xq6afzPN7DbrnN0eP2eckpbyJJfK7G_SOcewVJUyk6iknQ3AVQQXH2-lSAZywMd0KuyLpk'
+
+        const authReq = req.clone({setHeaders: {'Authorization': `Bearer ${authToken}`}})
+
+        return next.handle(authReq)
+    }
+}
