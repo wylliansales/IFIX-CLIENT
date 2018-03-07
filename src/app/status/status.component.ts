@@ -8,8 +8,6 @@ import {StatusService} from '../core/status.service';
 })
 export class StatusComponent implements OnInit {
 
-  data: any
-
   constructor(private statusService: StatusService) { }
 
   ngOnInit() {

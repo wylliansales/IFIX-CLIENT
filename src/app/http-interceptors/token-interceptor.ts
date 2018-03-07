@@ -1,14 +1,24 @@
-import { Injectable} from '@angular/core';
-import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
+import {Injectable} from '@angular/core'
+import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http'
+import {HttpHeaders} from '@angular/common/http'
 
 @Injectable()
-export class TokenInterceptor implements HttpInterceptor{
+export class TokenInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
-        const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjM1YzA2ODJhMzQyMzMwNDA0OGE1OGQwMmViOGM4YzNiZDg5MTBhMzgzYmJkYWU3OTAyMGE2MGVjZjA0MDdjNzkwZWJhYzZjODg0MThkZDhmIn0.eyJhdWQiOiI0IiwianRpIjoiMzVjMDY4MmEzNDIzMzA0MDQ4YTU4ZDAyZWI4YzhjM2JkODkxMGEzODNiYmRhZTc5MDIwYTYwZWNmMDQwN2M3OTBlYmFjNmM4ODQxOGRkOGYiLCJpYXQiOjE1MjAzNjg4ODMsIm5iZiI6MTUyMDM2ODg4MywiZXhwIjoxNTUxOTA0ODgzLCJzdWIiOiIxMDEiLCJzY29wZXMiOltdfQ.cmGnADyvSxam3XvBV7N_R-iVYHanDxUml0uuMLmPf-XaKsDmeqIy_od6W6E3givHSE4x2AJFkJP0uTd83u-QzJ17doOE9lHKeQKR24FVTY_LNZ5FKWsqURxldK6fTsybLRess9vwW8JGQXzkyPdyxB2KSWdUxSJ4k6ixfS_pkmzuaVUPpIO6afa0mbSgzHFQzxqLAgXPn2txga7JPkaPrJcZ-8ypNaLkxY4zHnwjaNSBM3uvWDrm68LKQJaxX3zhplQOaLsGhcMJSqtLV-xvvv5c0Fo45bXppKIlP3lejKOQdhmDvjoqpJVfFXChHhgHhHsnbCId0aI1K4horT8SUpOmj6dakFPz75ZICaJFsH2PQqot2LkPMzz3URqTyb87la8AAj5e-EVz8Qg7KAlDUNQWhicIDVQNd3XmyDhrNeBErxTgFUq1Cke6-zuEpIzBC2QoQXCPWdpdJcjZMIpC8Ve9AqkezMFqzpZAUhz2P36PumGLfRvyQAZ2NofhqeBk5JFPyT0AsEFyFADf676acIrpqn5L1YcDl9LJ_piaIybiYVc4KWUm_8cKG_Ylm65w_6x-Ki_32KT2oF0zcCe3WZPpaUjZNrgqKcfN8xq6afzPN7DbrnN0eP2eckpbyJJfK7G_SOcewVJUyk6iknQ3AVQQXH2-lSAZywMd0KuyLpk'
+        const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjVmM2NkOTNlOGMzNTI2NjU5MTc0Y2M5NjQ5NTIxMTY3YjUwNGVkNTFhNGNlNjBmYWIyNzIwZTI1NDRhNTRlZGYyOTMzZWQyNGEzYTU5MjY3In0.eyJhdWQiOiIyIiwianRpIjoiNWYzY2Q5M2U4YzM1MjY2NTkxNzRjYzk2NDk1MjExNjdiNTA0ZWQ1MWE0Y2U2MGZhYjI3MjBlMjU0NGE1NGVkZjI5MzNlZDI0YTNhNTkyNjciLCJpYXQiOjE1MjAzOTgwNDgsIm5iZiI6MTUyMDM5ODA0OCwiZXhwIjoxNTUxOTM0MDQ4LCJzdWIiOiIxIiwic2NvcGVzIjpbIm1hbmFnZS11c2VyIl19.PdXKnE-0FBtU7TKrnbMwAAeuQ9imXIbiyZK4L0Gu-aHhhkPp-7r-iOx7uX0po9Qv8OaWISZp01u8rrEuU-7Ns3_D7DeUOHMW0uVXuWTxLT-RjVQZixKYa1fZ3i5DJctZ27MumWgYoIEuG80TecWp5KH-byg_jniYriWkPew67srCtQWoeTYHwhrA2SdOlUO3kYRRa5ykZtjOjod-D90xxbaRcdC720Lyl4d3St2tZjQNgHO_Pdra46L9AYVkY03N5eC0CSwGgyQmegWl-onpfm2R043vx2abcxYhBaciATt_hBCKVFTDqbSmIoDbOXDsalCTvQg7NngK1c-hqW9FXa2kndwiOhXsAc8KOZgqkw1n6i-Sq0buNyAtWthQ9LVPBIfH05oaGdlL3BjVopCZqTcT-DutrpKKQ0BTG9Ps2puCcHDdpxAmikSCfuppZm676E9rh_s-iIQVxKf0QC6oxwzYcWBo-dWIWlbU1dMHfC3JXnarg-grU_xKvLhVoOqnhk_SuTlK5IdTZk7u05Bk5Lhmvth2mdU-qnwuCswGJ07tcfNkhNWiwJlFxXOolMWYgkTJqKmDN1cAjF8ZnS9iUrAq95u-mx1S2l4cTV57hFNwVLBwNgSR3CN-0B2j81GPsdn5TDDwEVUjo2j9gJklLwuSu9UZD4ge99ZqNOEAWWo'
 
-        const authReq = req.clone({setHeaders: {'Authorization': `Bearer ${authToken}`}})
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            })
+        }
 
-        return next.handle(authReq)
+
+        const request = req.clone(httpOptions)
+
+        return next.handle(request)
+
     }
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app-routing';
@@ -11,14 +11,17 @@ import { LoginComponent } from './security/login/login.component';
 
 import { ComponentsModule } from './components/components.module';
 import {CoreModule} from './core/core.module';
-import {TokenInterceptor} from './http-interceptors/token-interceptor';
+import {httpInterceptorsProviders} from './http-interceptors/interceptors';
+import { RequestsListComponent } from './requests/requests-list/requests-list.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RequestsComponent,
-    LoginComponent
+    LoginComponent,
+    RequestsListComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,7 @@ import {TokenInterceptor} from './http-interceptors/token-interceptor';
     HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
+  providers: [httpInterceptorsProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
