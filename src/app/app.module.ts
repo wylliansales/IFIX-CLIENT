@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
-import { RouterModule } from '@angular/router';
+import {RouterModule, PreloadAllModules, PreloadingStrategy} from '@angular/router';
 import { ROUTES } from './app-routing';
 
 import { AppComponent } from './app.component';
@@ -13,6 +15,9 @@ import { ComponentsModule } from './components/components.module';
 import {ServicesModule} from './services/services.module';
 import {httpInterceptorsProviders} from './http-interceptors/interceptors';
 import { RequestsListComponent } from './requests/requests-list/requests-list.component';
+import {SectorsComponent} from './sectors/sectors.component';
+import {SharedModule} from './shared/shared.module';
+
 
 
 
@@ -21,16 +26,20 @@ import { RequestsListComponent } from './requests/requests-list/requests-list.co
     AppComponent,
     RequestsComponent,
     LoginComponent,
-    RequestsListComponent
+    RequestsListComponent,
+    SectorsComponent,
   ],
   imports: [
     BrowserModule,
-    ComponentsModule,
+    ReactiveFormsModule,
+    SharedModule,
     ServicesModule,
+    ComponentsModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES)
+
+    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
-  providers: [httpInterceptorsProviders],
+  providers: [httpInterceptorsProviders, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

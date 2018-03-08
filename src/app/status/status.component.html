@@ -20,7 +20,7 @@
                     <nav aria-label="Page navigation" *ngIf="status?.length > 0">
                         <ul class="pagination">
                             <li>
-                                <a (click)="getCurrentPage(meta.current_page)" aria-label="Previous">
+                                <a (click)="getStatusPag(meta.current_page)" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
@@ -28,14 +28,14 @@
                                 <a >1</a>
                             </li>
                             <li>
-                                <a (click)="getLastPage(meta.last_page)" aria-label="Next">
+                                <a (click)="getStatusPag(meta.last_page)" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
                         </ul>
                     </nav>
 
-                    <div class="col-md-12" *ngIf="status?.length === 0">
+                    <div class="col-md-12" *ngIf="!status?.length > 0">
                         <p class="lead text-center">
                             Não foram encontrados itens para sua busca.
                         </p>

@@ -1,9 +1,18 @@
-import { EventEmitter } from '@angular/core'
+declare var $: any;
 
 export class NotificationsService{
-    notifier = new EventEmitter<string[]>()
+    showNotification(message: string, type: string){
 
-    notify(message: string[]){
-        this.notifier.emit(message)
+        $.notify({
+            icon: '',
+            message: `<h5>${message}</h5>`
+        },{
+            type: type,
+            timer: 800,
+            placement: {
+                from: 'top',
+                align: 'center'
+            }
+        });
     }
 }

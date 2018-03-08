@@ -1,11 +1,12 @@
 import {NgModule} from '@angular/core';
-import {NotificationsComponent} from './notifications/notifications.component';
+import {InputComponent} from './input/input.component';
+import {RadioComponent} from './radio/radio.component';
 
 
 @NgModule({
-    declarations: [NotificationsComponent],
+    declarations: [InputComponent, RadioComponent],
     imports: [],
-    exports: [NotificationsComponent]
+    exports: []
 })
 
 export class SharedModule{}

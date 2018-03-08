@@ -1,11 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
+import {ReactiveFormsModule} from '@angular/forms';
 
 import {StatusComponent} from './status.component';
 import { StatusFormComponent } from './status-form/status-form.component';
-import {SharedModule} from '../shared/shared.module';
 import { StatusListComponent } from './status-list/status-list.component';
+
 
 
 const ROUTES: Routes = [
@@ -15,7 +16,7 @@ const ROUTES: Routes = [
 
 @NgModule({
     declarations: [StatusComponent, StatusFormComponent, StatusListComponent],
-    imports: [CommonModule, SharedModule , RouterModule.forChild(ROUTES)]
+    imports: [CommonModule, RouterModule.forChild(ROUTES), ReactiveFormsModule],
 })
 
 export class StatusModule {}

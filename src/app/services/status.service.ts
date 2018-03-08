@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 
+import 'rxjs/add/operator/map';
+
 import {URL_API} from '../app.api';
 import {Status} from '../status/status.model';
 
@@ -18,8 +20,8 @@ export class StatusService{
         return this.http.get<Status[]>(`${URL_API}/status`, {params: params})
     }
 
-    addStatus(){
-
+    addStatus(status: Status): Observable<Status>{
+        return this.http.post<Status>(`${URL_API}/status`, status)
     }
 
     getStatusById(id: number){
