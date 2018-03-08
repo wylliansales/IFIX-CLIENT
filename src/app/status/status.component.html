@@ -3,7 +3,7 @@
         <div class="col-lg-12 col-md-12">
             <div class="row">
                 <div class="col-md-5">
-                    <a [routerLink]="['/status/new']" class="btn">Noto Status +</a>
+                    <a [routerLink]="['/status/new']" class="btn">Novo Status +</a>
                 </div>
                 <div class="col-md-7">
                     <div class="form-group form-black is-empty" style="margin-top: 16px">
@@ -13,14 +13,38 @@
                 </div>
             </div>
             <div class="card">
-                <!--<div class="card-header">
-                    Status
-                </div>-->
                 <div class="card-content">
-                   <router-outlet></router-outlet>
+
+                    <app-status-list [status]="status"></app-status-list>
+
+                    <nav aria-label="Page navigation" *ngIf="status?.length > 0">
+                        <ul class="pagination">
+                            <li>
+                                <a (click)="getCurrentPage(meta.current_page)" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li >
+                                <a >1</a>
+                            </li>
+                            <li>
+                                <a (click)="getLastPage(meta.last_page)" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="col-md-12" *ngIf="status?.length === 0">
+                        <p class="lead text-center">
+                            Não foram encontrados itens para sua busca.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<button (click)="getStatus()" class="btn btn-primary">aaaaaaaaaaaa</button>
+
+
+

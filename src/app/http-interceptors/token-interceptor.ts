@@ -6,8 +6,8 @@ import {HttpHeaders} from '@angular/common/http'
 export class TokenInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
-        const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjVmM2NkOTNlOGMzNTI2NjU5MTc0Y2M5NjQ5NTIxMTY3YjUwNGVkNTFhNGNlNjBmYWIyNzIwZTI1NDRhNTRlZGYyOTMzZWQyNGEzYTU5MjY3In0.eyJhdWQiOiIyIiwianRpIjoiNWYzY2Q5M2U4YzM1MjY2NTkxNzRjYzk2NDk1MjExNjdiNTA0ZWQ1MWE0Y2U2MGZhYjI3MjBlMjU0NGE1NGVkZjI5MzNlZDI0YTNhNTkyNjciLCJpYXQiOjE1MjAzOTgwNDgsIm5iZiI6MTUyMDM5ODA0OCwiZXhwIjoxNTUxOTM0MDQ4LCJzdWIiOiIxIiwic2NvcGVzIjpbIm1hbmFnZS11c2VyIl19.PdXKnE-0FBtU7TKrnbMwAAeuQ9imXIbiyZK4L0Gu-aHhhkPp-7r-iOx7uX0po9Qv8OaWISZp01u8rrEuU-7Ns3_D7DeUOHMW0uVXuWTxLT-RjVQZixKYa1fZ3i5DJctZ27MumWgYoIEuG80TecWp5KH-byg_jniYriWkPew67srCtQWoeTYHwhrA2SdOlUO3kYRRa5ykZtjOjod-D90xxbaRcdC720Lyl4d3St2tZjQNgHO_Pdra46L9AYVkY03N5eC0CSwGgyQmegWl-onpfm2R043vx2abcxYhBaciATt_hBCKVFTDqbSmIoDbOXDsalCTvQg7NngK1c-hqW9FXa2kndwiOhXsAc8KOZgqkw1n6i-Sq0buNyAtWthQ9LVPBIfH05oaGdlL3BjVopCZqTcT-DutrpKKQ0BTG9Ps2puCcHDdpxAmikSCfuppZm676E9rh_s-iIQVxKf0QC6oxwzYcWBo-dWIWlbU1dMHfC3JXnarg-grU_xKvLhVoOqnhk_SuTlK5IdTZk7u05Bk5Lhmvth2mdU-qnwuCswGJ07tcfNkhNWiwJlFxXOolMWYgkTJqKmDN1cAjF8ZnS9iUrAq95u-mx1S2l4cTV57hFNwVLBwNgSR3CN-0B2j81GPsdn5TDDwEVUjo2j9gJklLwuSu9UZD4ge99ZqNOEAWWo'
-
+        const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImJhODQ5ZTM1ZDIwZDM2NjAwODJmZDNmYWZhNzYwNGM5MmQ4ZTM3NGYwMjJjNmU1YzMxMjczZGE3OGYxNjM0ZDM5MjBmMzA0ZmJmYzExYzUzIn0.eyJhdWQiOiIyIiwianRpIjoiYmE4NDllMzVkMjBkMzY2MDA4MmZkM2ZhZmE3NjA0YzkyZDhlMzc0ZjAyMmM2ZTVjMzEyNzNkYTc4ZjE2MzRkMzkyMGYzMDRmYmZjMTFjNTMiLCJpYXQiOjE1MjA0Nzk4ODAsIm5iZiI6MTUyMDQ3OTg4MCwiZXhwIjoxNTUyMDE1ODgwLCJzdWIiOiIxIiwic2NvcGVzIjpbIm1hbmFnZS11c2VyIl19.bEp2YSJUZ1bfMQQ7hEGHtz150axHsLZprYBkWd6yU5d5C9W3-XZrKLDeqz61rH5azw3qMujl6u_SYBh6zFhe8HkDh3e8WdguhlzzM9chZdeck7ny3ctYyOrzsnK3KcDFz5nCcYZqEK1klyy75sQ0mcoGp80p4vUkSp-edhQak_9RRm5Mg78Cxso1Z12zJPbKv8c5vtlBe1UWQDhXdoTlR-BngedgQ7IPTtJsbYc_zXQg4On3JBtTY9vxeE6oDj-fMgznurFgCfiG5MhpdBBrPYUOiUJ3MF7sYVR_aBakF1PaNynHrOpYRTgcrg9w48r9bzPO4IIm7OCdyI6kNZqJONG9nPRD3bcRxG50_6r0w5yKuXzmnCU7X7URbWhgONw-6z1MoNBDqfRzxOAvCIsSq-wzotk7TRFeDQelL63mgWiAbvAyDK3SriwkI8rj8FQMtXTXKTZQpr4R9gD18sgf9eT28LGnkdSlR5dKBXnDFp44GHXE4JnkRBeeHEgYMKfLAeJiXb-bjOtdG7W9n3SeUSiRbzI0S75xeHf9rlKNQWABWAyHYgEktAMy2rug8MMxZhQnOcadvBQxgj5grg51dSaxJ-Zr9RwTJaWkE5nrIXXRwFNJzvfUoxpaqSw8_velwiPdzSc9tGorpva5hkuMb73AraT70haxoGmPQn9ltgI'
+       // const newToken = ''
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
@@ -15,6 +15,7 @@ export class TokenInterceptor implements HttpInterceptor {
             })
         }
 
+       // httpOptions.headers = httpOptions.headers.set('Authorization', `Bearer ${newToken}`)
 
         const request = req.clone(httpOptions)
 

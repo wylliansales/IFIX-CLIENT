@@ -1,5 +1,5 @@
-export interface Status{
-    id: string,
-    name: string,
-    description: string
+export interface Status {
+	id: string,
+	name: string,
+	description: string
 }

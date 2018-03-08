@@ -10,7 +10,7 @@ import { RequestsComponent } from './requests/requests.component';
 import { LoginComponent } from './security/login/login.component';
 
 import { ComponentsModule } from './components/components.module';
-import {CoreModule} from './core/core.module';
+import {ServicesModule} from './services/services.module';
 import {httpInterceptorsProviders} from './http-interceptors/interceptors';
 import { RequestsListComponent } from './requests/requests-list/requests-list.component';
 
@@ -26,7 +26,7 @@ import { RequestsListComponent } from './requests/requests-list/requests-list.co
   imports: [
     BrowserModule,
     ComponentsModule,
-    CoreModule,
+    ServicesModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],

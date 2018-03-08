@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-status-form',
-  templateUrl: './status-form.component.html',
-  styleUrls: ['./status-form.component.css']
+  templateUrl: './status-form.component.html'
 })
 export class StatusFormComponent implements OnInit {
 

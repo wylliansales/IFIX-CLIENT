@@ -4,24 +4,18 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {StatusComponent} from './status.component';
 import { StatusFormComponent } from './status-form/status-form.component';
-import { StatusTableComponent } from './status-table/status-table.component';
+import {SharedModule} from '../shared/shared.module';
 import { StatusListComponent } from './status-list/status-list.component';
-import { StatuComponent } from './status-list/statu/statu.component';
 
 
 const ROUTES: Routes = [
-    {path: '', component: StatusComponent,
-        children: [
-            {path: '', redirectTo: 'list', pathMatch: 'full'},
-            {path: 'list', component: StatusListComponent},
-            {path: 'new', component: StatusFormComponent}
-        ]},
-
-]
+    {path: '', component: StatusComponent},
+    {path: 'new', component: StatusFormComponent}
+    ]
 
 @NgModule({
-    declarations: [StatusComponent, StatusFormComponent, StatusListComponent, StatuComponent],
-    imports: [CommonModule, RouterModule.forChild(ROUTES)]
+    declarations: [StatusComponent, StatusFormComponent, StatusListComponent],
+    imports: [CommonModule, SharedModule , RouterModule.forChild(ROUTES)]
 })
 
 export class StatusModule {}
