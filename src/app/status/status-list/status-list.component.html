@@ -11,10 +11,10 @@
     <td>{{statu.name}}</td>
     <td>{{statu.description}}</td>
     <td class="td-actions text-right">
-      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
+      <button (click)="emitEdit(statu)" type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
         <i class="material-icons">edit</i>
       </button>
-      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+      <button (click)="emitDelete(statu)" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
         <i class="material-icons">close</i>
       </button>
     </td>

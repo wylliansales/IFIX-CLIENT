@@ -15,24 +15,25 @@
             <div class="card">
                 <div class="card-content">
 
-                    <app-status-list [status]="status"></app-status-list>
+                    <app-status-list [status]="status" (edit)="edit($event)" (delete)="delete($event)"></app-status-list>
 
                     <nav aria-label="Page navigation" *ngIf="status?.length > 0">
                         <ul class="pagination">
                             <li>
-                                <a (click)="getStatusPag(meta.current_page)" aria-label="Previous">
+                                <a (click)="backPage(back)" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
                             <li >
-                                <a >1</a>
+                                <a> {{meta.from}} </a>
                             </li>
                             <li>
-                                <a (click)="getStatusPag(meta.last_page)" aria-label="Next">
+                                <a (click)="nextPag(next)" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
                         </ul>
+                        <p class="text-right">Total de Registos: {{meta.total}}</p>
                     </nav>
 
                     <div class="col-md-12" *ngIf="!status?.length > 0">

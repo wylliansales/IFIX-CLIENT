@@ -17,15 +17,21 @@ export class StatusService{
         if(pag){
             params = new HttpParams().set('page', pag.toString())
         }
+
         return this.http.get<Status[]>(`${URL_API}/status`, {params: params})
     }
 
-    addStatus(status: Status): Observable<Status>{
-        return this.http.post<Status>(`${URL_API}/status`, status)
+    addStatus(status: Status): Observable<any>{
+        return this.http.post<any>(`${URL_API}/status`, status)
     }
 
     getStatusById(id: number){
 
+    }
+
+    deleteStatus(status: Status | number): Observable<Status> {
+        const id = typeof status === 'number' ? status : status.id;
+        return this.http.delete<Status>(`${URL_API}/status/${id}`);
     }
 
 }

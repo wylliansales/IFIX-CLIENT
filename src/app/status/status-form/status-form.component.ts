@@ -29,7 +29,11 @@ export class StatusFormComponent implements OnInit {
     addStatus(status: Status) {
         this.statusService.addStatus(status)
             .subscribe((response) => {
-                this.notificationsService.showNotification(`Status ${response.data.name} cadastrado com sucesso!`, 'success')
+                if(response.error){
+                    console.log(response.error_description)
+                } else {
+                    this.notificationsService.showNotification(`Status ${response['data'].name} cadastrado com sucesso!`, 'success')
+                }
             })
 
         this.stForm.reset()

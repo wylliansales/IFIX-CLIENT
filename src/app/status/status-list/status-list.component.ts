@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import {EventEmitter} from '@angular/core';
 import {Status} from '../status.model';
 
 @Component({
@@ -8,9 +9,21 @@ import {Status} from '../status.model';
 export class StatusListComponent implements OnInit {
 
   @Input() status: Status[]
+  @Output() delete = new EventEmitter<Status>()
+  @Output() edit = new EventEmitter<Status>()
+
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  emitDelete(status: Status){
+    this.delete.emit(status)
+  }
+
+  emitEdit(status: Status){
+    this.edit.emit(status)
   }
 
 }

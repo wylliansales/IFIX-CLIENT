@@ -2,7 +2,7 @@ declare var $: any;
 
 export class NotificationsService{
     showNotification(message: string, type: string){
-
+        // '','info','success','warning','danger'
         $.notify({
             icon: '',
             message: `<h5>${message}</h5>`
