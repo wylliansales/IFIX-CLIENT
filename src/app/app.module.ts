@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
@@ -17,17 +17,15 @@ import {httpInterceptorsProviders} from './http-interceptors/interceptors';
 import { RequestsListComponent } from './requests/requests-list/requests-list.component';
 import {SectorsComponent} from './sectors/sectors.component';
 import {SharedModule} from './shared/shared.module';
-
-
-
+import {AplicationErrorHandle} from './app.error-handler';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RequestsComponent,
     LoginComponent,
-    RequestsListComponent,
-    SectorsComponent,
+    RequestsListComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +37,8 @@ import {SharedModule} from './shared/shared.module';
 
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
-  providers: [httpInterceptorsProviders, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [httpInterceptorsProviders, {provide: LocationStrategy, useClass: HashLocationStrategy},
+      {provide: ErrorHandler, useClass: AplicationErrorHandle}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

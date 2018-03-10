@@ -26,7 +26,6 @@ export class StatusComponent implements OnInit {
             response => {
                 this.status = response['data'];
                 this.meta = response['meta'];
-                console.log(response['meta']);
             }
         );
     }
