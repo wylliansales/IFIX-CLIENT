@@ -30,7 +30,7 @@ import { UsersComponent } from './users/users.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    SharedModule,
+    SharedModule.forRoot(),
     ServicesModule,
     ComponentsModule,
     HttpClientModule,

@@ -32,6 +32,7 @@ export class StatusComponent implements OnInit {
 
     delete(status: Status) {
         this.status = this.status.filter(s => s !== status);
+        this.meta.total--;
         this.statusService.deleteStatus(status).subscribe(response =>
             this.notificationsService.showNotification(`${status.name} excluído`, 'success')
         );

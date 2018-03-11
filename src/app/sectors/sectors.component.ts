@@ -32,6 +32,7 @@ export class SectorsComponent implements OnInit {
 
     delete(sector: Sector) {
         this.sectors = this.sectors.filter(s => s !== sector);
+        this.meta.total--;
         this.sectorsService.deleteSector(sector).subscribe(response =>
             this.notificationsService.showNotification(`${sector.name} excluído`, 'success')
         );

@@ -1,16 +1,21 @@
 import { NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
+import {SharedModule} from '../shared/shared.module';
 
 import {EquipmentsComponent} from './equipments.component';
+import { EquipmentFormComponent } from './equipment-form/equipment-form.component';
+import { EquipmentListComponent } from './equipment-list/equipment-list.component';
+
 
 const ROUTES: Routes = [
-    {path: '', component: EquipmentsComponent}
+    {path: '', component: EquipmentsComponent},
+    {path: 'new', component: EquipmentFormComponent},
+    {path: 'list', component: EquipmentListComponent}
 ]
 
 @NgModule({
-    declarations: [EquipmentsComponent],
-    imports: [CommonModule, RouterModule.forChild(ROUTES)]
+    declarations: [EquipmentsComponent, EquipmentFormComponent, EquipmentListComponent],
+    imports: [SharedModule, RouterModule.forChild(ROUTES)]
 })
 
 export class EquipmentsModule{}
