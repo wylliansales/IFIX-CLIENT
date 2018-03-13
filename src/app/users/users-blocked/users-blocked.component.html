@@ -1,0 +1,16 @@
+<div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let user of users">
+    <div class="card card-stats">
+        <div class="card-header" data-background-color="red">
+            <i class="material-icons">block</i>
+        </div>
+        <div class="card-content">
+            <p class="category"><button (click)="releaseUser(user)" class="btn btn-success btn-sm">Liberar</button></p>
+            <h6 class="title">Bloqueado</h6>
+        </div>
+        <div class="card-footer">
+            <div class="stats">
+                <i class="material-icons">account_circle</i> {{user.name}}<br>{{user.email}}
+            </div>
+        </div>
+    </div>
+</div>

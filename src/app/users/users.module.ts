@@ -3,16 +3,12 @@ import {SharedModule} from '../shared/shared.module';
 import {RouterModule, Routes} from '@angular/router';
 
 import {UsersComponent} from './users.component';
-import { UsersFormComponent } from './users-form/users-form.component';
-import { UsersListComponent } from './users-list/users-list.component';
+import { UsersBlockedComponent } from './users-blocked/users-blocked.component';
+import { UsersReleasedComponent } from './users-released/users-released.component';
 
-const ROUTES: Routes = [
-    {path: '', component: UsersComponent},
-    {path: 'new', component: UsersFormComponent}
-]
 
 @NgModule({
-    declarations: [UsersComponent, UsersFormComponent, UsersListComponent],
-    imports: [SharedModule, RouterModule.forChild(ROUTES)]
+    declarations: [UsersComponent, UsersBlockedComponent, UsersReleasedComponent],
+    imports: [SharedModule, RouterModule]
 })
 export class UsersModule{}

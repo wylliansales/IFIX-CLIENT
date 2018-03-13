@@ -1,3 +1,39 @@
-<p>
-  users works!
-</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="col-lg-12 col-md-12">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="form-group form-black is-empty" style="margin-top: 16px">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav-tabs-navigation" style="margin-bottom: 10px">
+                    <div class="nav-tabs-wrapper">
+                        <ul class="nav nav-tabs" data-tabs="tabs">
+                            <li routerLinkActive="active">
+                                <a [routerLink]="['blocked']">
+                                    <i class="material-icons">lock_outline</i>
+                                    Usuários bloqueados
+                                </a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a class="pull-right" [routerLink]="['released']">
+                                    <i class="material-icons">lock_open</i>
+                                    Usuários liberados
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

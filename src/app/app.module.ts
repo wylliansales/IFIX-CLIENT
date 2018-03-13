@@ -19,6 +19,7 @@ import {SectorsComponent} from './sectors/sectors.component';
 import {SharedModule} from './shared/shared.module';
 import {AplicationErrorHandle} from './app.error-handler';
 import { UsersComponent } from './users/users.component';
+import {UsersModule} from './users/users.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { UsersComponent } from './users/users.component';
     SharedModule.forRoot(),
     ServicesModule,
     ComponentsModule,
+    UsersModule,
     HttpClientModule,
 
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
