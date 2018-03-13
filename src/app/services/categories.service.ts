@@ -13,7 +13,7 @@ export class CategoriesService{
     constructor(private http: HttpClient){}
 
 
-    getCategory(pag?: number): Observable<Sector[]>{
+    getCategory(pag?: number): Observable<Category[]>{
         let params: HttpParams = undefined
         if(pag){
             params = new HttpParams().set('page', pag.toString())

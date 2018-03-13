@@ -19,8 +19,8 @@ export class EquipmentFormComponent implements OnInit {
 
     equipmentForm: FormGroup
     equipments: Equipment
-    categories: Category
-    sectors: Sector
+    categories: Category[]
+    sectors: Sector[]
 
     constructor(private fb: FormBuilder,
                 private equipmentsService: EquipmentsService,
@@ -35,8 +35,8 @@ export class EquipmentFormComponent implements OnInit {
             description: this.fb.control('',[Validators.required]),
             sector_id: this.fb.control('',[Validators.required])
         })
-        this.categoriesServices.getCategory().subscribe( response => this.categories = response.data)
-        this.sectorsServices.getSector().subscribe( response => this.sectors = response.data)
+        this.categoriesServices.getCategory().subscribe( response => this.categories = response['data'])
+       this.sectorsServices.getSector().subscribe( response => this.sectors = response['data'])
 
     }
 

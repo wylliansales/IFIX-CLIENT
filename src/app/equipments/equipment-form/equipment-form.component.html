@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <app-select-container errorMessage="Campo obrigatório" label="Categoria">
                             <select class="form-control" formControlName="category_id">
-                                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                                <option *ngFor="let category of categories" [value]="category.id">{{category?.name}}</option>
                             </select>
                         </app-select-container>
                     </div>
@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <app-select-container errorMessage="Campo obrigatório" label="Setor">
                             <select class="form-control" formControlName="sector_id">
-                                <option *ngFor="let sector of sectors" [value]="sector.id">{{sector.name}}</option>
+                                <option *ngFor="let sector of sectors" [value]="sector.id">{{sector?.name}}</option>
                             </select>
                         </app-select-container>
                     </div>
