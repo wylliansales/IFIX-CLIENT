@@ -12,4 +12,7 @@ export class RequestsListComponent implements OnInit {
   ngOnInit() {
   }
 
+  getClick(){
+    alert('Clicou')
+  }
 }

@@ -20,13 +20,14 @@ import {SharedModule} from './shared/shared.module';
 import {AplicationErrorHandle} from './app.error-handler';
 import { UsersComponent } from './users/users.component';
 import {UsersModule} from './users/users.module';
+import { RequestDetailComponent } from './request-detail/request-detail.component';
+import {RequestsModule} from './requests/requests.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RequestsComponent,
     LoginComponent,
-    RequestsListComponent
+    RequestDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +36,7 @@ import {UsersModule} from './users/users.module';
     ServicesModule,
     ComponentsModule,
     UsersModule,
+    RequestsModule,
     HttpClientModule,
 
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})

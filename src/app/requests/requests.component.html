@@ -1,38 +1,54 @@
 <div class="main-content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="card" >
-                <div class="nav-tabs-navigation">
+        <div class="col-lg-12 col-md-12">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="form-group form-black is-empty" style="margin-top: 16px">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav-tabs-navigation" style="margin-bottom: 10px">
                     <div class="nav-tabs-wrapper">
-                        <ul class="nav nav-tabs" data-tabs="tabs">
+                        <ul class="nav nav-tabs nav-internal" data-tabs="tabs" >
                             <li routerLinkActive="active">
-                                <a [routerLink]="['novas']" data-toggle="tab">
-                                    <i class="material-icons">bug_report</i>
+                                <a [routerLink]="['news']">
+                                    <i class="material-icons">lock_outline</i>
                                     Novas Solicitações
-                                    <div class="ripple-container"></div></a>
+                                </a>
                             </li>
                             <li routerLinkActive="active">
-                                <a [routerLink]="['vinculadas']" data-toggle="tab">
-                                    <i class="material-icons">code</i>
-                                    Novas Solicitações Vinculadas
-                                    <div class="ripple-container"></div></a>
+                                <a class="pull-right" [routerLink]="['linked-request']">
+                                    <i class="material-icons">lock_open</i>
+                                    Novas solicitações vinculadas
+                                </a>
                             </li>
                             <li routerLinkActive="active">
-                                <a [routerLink]="['abertos']" data-toggle="tab">
-                                    <i class="material-icons">cloud</i>
+                                <a class="pull-right" [routerLink]="['open-request']">
+                                    <i class="material-icons">lock_open</i>
                                     Abertos
-                                    <div class="ripple-container"></div></a>
+                                </a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a class="pull-right" [routerLink]="['close-request']">
+                                    <i class="material-icons">lock_open</i>
+                                    Finalizadas
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!--<div class="card-header">-->
-                    <!---->
-                <!--</div>-->
-
-                <div class="card-content">
-                    <app-requests-list></app-requests-list>
-                    <!--<router-outlet></router-outlet>-->
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <!--<app-requests-list></app-requests-list>-->
+                            <router-outlet></router-outlet>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

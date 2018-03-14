@@ -1,97 +1,24 @@
 <table class="table table-hover">
-  <thead class="text-danger">
-  <tr>
-    <th>Name</th>
-    <th>Country</th>
-    <th>City</th>
-    <th>Salary</th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Dakota Rice</td>
-    <td>Niger</td>
-    <td>Oud-Turnhout</td>
-    <td class="text-danger">$36,738</td>
-    <td class="td-actions text-right">
-      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-        <i class="material-icons">edit</i>
-      </button>
-      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-        <i class="material-icons">close</i>
-      </button>
-    </td>
-  </tr>
-  <tr>
-    <td>Minerva Hooper</td>
-    <td>Curaçao</td>
-    <td>Sinaai-Waas</td>
-    <td class="text-danger">$23,789</td>
-    <td class="td-actions text-right">
-      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-        <i class="material-icons">edit</i>
-      </button>
-      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-        <i class="material-icons">close</i>
-      </button>
-    </td>
-  </tr>
-  <tr>
-    <td>Sage Rodriguez</td>
-    <td>Netherlands</td>
-    <td>Baileux</td>
-    <td class="text-danger">$56,142</td>
-    <td class="td-actions text-right">
-      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-        <i class="material-icons">edit</i>
-      </button>
-      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-        <i class="material-icons">close</i>
-      </button>
-    </td>
-  </tr>
-  <tr>
-    <td>Philip Chaney</td>
-    <td>Korea, South</td>
-    <td>Overland Park</td>
-    <td class="text-danger">$38,735</td>
-    <td class="td-actions text-right">
-      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-        <i class="material-icons">edit</i>
-      </button>
-      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-        <i class="material-icons">close</i>
-      </button>
-    </td>
-  </tr>
-  <tr>
-    <td>Doris Greene</td>
-    <td>Malawi</td>
-    <td>Feldkirchen in Kärnten</td>
-    <td class="text-danger">$63,542</td>
-    <td class="td-actions text-right">
-      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-        <i class="material-icons">edit</i>
-      </button>
-      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-        <i class="material-icons">close</i>
-      </button>
-    </td>
-  </tr>
-  <tr>
-    <td>Mason Porter</td>
-    <td>Chile</td>
-    <td>Gloucester</td>
-    <td class="text-danger">$78,615</td>
-    <td class="td-actions text-right">
-      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-        <i class="material-icons">edit</i>
-      </button>
-      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-        <i class="material-icons">close</i>
-      </button>
-    </td>
-  </tr>
-  </tbody>
+    <thead class="text-danger">
+    <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>City</th>
+        <th>Salary</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr (click)="getClick()">
+        <td>Dakota Rice</td>
+        <td>Niger</td>
+        <td>Oud-Turnhout</td>
+        <td class="text-danger">$36,738</td>
+    </tr>
+    <tr>
+        <td>Minerva Hooper</td>
+        <td>Curaçao</td>
+        <td>Sinaai-Waas</td>
+        <td class="text-danger">$23,789</td>
+    </tr>
+    </tbody>
 </table>
