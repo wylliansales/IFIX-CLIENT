@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RequestItem} from '../request-item.model';
+import {RequestsService} from '../../services/requests.service';
 
 @Component({
   selector: 'app-requests-close',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestsCloseComponent implements OnInit {
 
-  constructor() { }
+  requestItems: RequestItem[]
+
+  constructor(private requestsService: RequestsService) { }
 
   ngOnInit() {
+    this.requestsService.getClosedReqquest().subscribe(response => this.requestItems = response['data'])
   }
 
 }

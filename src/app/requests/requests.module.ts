@@ -13,6 +13,6 @@ import {RouterModule} from '@angular/router';
 @NgModule({
     declarations: [RequestsComponent, RequestsListComponent, RequestsNewsComponent, RequestsLinkedComponent, RequestsOpenComponent, RequestsCloseComponent],
     imports: [SharedModule, RouterModule],
-    exports: []
+    exports: [RequestsListComponent]
 })
 export class RequestsModule{}

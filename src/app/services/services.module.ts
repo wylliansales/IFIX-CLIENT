@@ -5,6 +5,8 @@ import {SectorsService} from './sectors.service';
 import {EquipmentsService} from './equipments.service';
 import {CategoriesService} from './categories.service';
 import {UsersService} from './users.service';
+import {RequestsService} from './requests.service';
+import {DepartamentsService} from './departaments.service';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import {UsersService} from './users.service';
                 NotificationsService,
                 EquipmentsService,
                 CategoriesService,
-                UsersService]
+                UsersService,
+                RequestsService,
+                DepartamentsService]
 })
 
 export class ServicesModule{}

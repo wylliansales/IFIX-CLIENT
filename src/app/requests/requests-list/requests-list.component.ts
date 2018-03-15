@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import {RequestItem} from '../request-item.model';
+import {EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-requests-list',
@@ -7,12 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestsListComponent implements OnInit {
 
-  constructor() { }
+    @Input() requestItems: RequestItem[];
+    @Output() meet = new EventEmitter<RequestItem>();
+    @Output() detail = new EventEmitter<RequestItem>();
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
 
-  getClick(){
-    alert('Clicou')
-  }
+    ngOnInit() {
+    }
+
+    getClick() {
+        alert('Clicou');
+    }
+
+    emitMeet(request: RequestItem) {
+        this.meet.emit(request)
+    }
+
+    detailRequest(request: RequestItem){
+        this.detail.emit(request);
+    }
 }

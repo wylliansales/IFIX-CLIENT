@@ -1,3 +1,6 @@
-<p>
-  requests-news works!
-</p>
+<app-requests-list [requestItems]="requestItems" (meet)="meet($event)"></app-requests-list>
+<div *ngIf="(!requestItems > 0)">
+    <p class="lead text-center">
+        Não foram encontrados itens para sua busca.
+    </p>
+</div>

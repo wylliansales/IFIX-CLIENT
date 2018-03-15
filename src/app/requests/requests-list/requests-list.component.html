@@ -1,24 +1,29 @@
-<table class="table table-hover">
-    <thead class="text-danger">
+<table class="table table-condensed table-hover table-responsive">
+    <thead class="text-gray">
     <tr>
-        <th>Name</th>
-        <th>Country</th>
-        <th>City</th>
-        <th>Salary</th>
+        <th>Protocolo</th>
+        <th>Assunto</th>
+        <th>Departamento</th>
+        <th>Usuário</th>
+        <th>Data/Hora</th>
+        <th>Atendente</th>
+
     </tr>
     </thead>
     <tbody>
-    <tr (click)="getClick()">
-        <td>Dakota Rice</td>
-        <td>Niger</td>
-        <td>Oud-Turnhout</td>
-        <td class="text-danger">$36,738</td>
-    </tr>
-    <tr>
-        <td>Minerva Hooper</td>
-        <td>Curaçao</td>
-        <td>Sinaai-Waas</td>
-        <td class="text-danger">$23,789</td>
+    <tr (click)="detailRequest(request)" *ngFor="let request of requestItems" style="cursor:pointer;">
+        <td>#{{request.id}}</td>
+        <td>{{request.subject_matter}}
+            <span class="label label-warning pull-right" *ngIf="request.attendant === null">Aguardando</span>
+            <span class="label label-danger pull-right" *ngIf="(request.attendant !== null && request.finalized === 1)">Finalizado</span>
+            <span class="label label-success pull-right" *ngIf="(request.attendant !== null && request.finalized === 0)">Aberto</span>
+        </td>
+        <td>{{request.department}}</td>
+        <td>{{request.user}}</td>
+        <td>{{request.created_at}}</td>
+        <td>{{request.attendant}}
+            <button (click)="emitMeet(request)" class="btn btn-success btn-sm" *ngIf="request.attendant === null">Atender</button>
+        </td>
     </tr>
     </tbody>
 </table>

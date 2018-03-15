@@ -8,26 +8,27 @@ import {RouterModule, PreloadAllModules, PreloadingStrategy} from '@angular/rout
 import { ROUTES } from './app-routing';
 
 import { AppComponent } from './app.component';
-import { RequestsComponent } from './requests/requests.component';
 import { LoginComponent } from './security/login/login.component';
 
 import { ComponentsModule } from './components/components.module';
 import {ServicesModule} from './services/services.module';
 import {httpInterceptorsProviders} from './http-interceptors/interceptors';
-import { RequestsListComponent } from './requests/requests-list/requests-list.component';
-import {SectorsComponent} from './sectors/sectors.component';
+
 import {SharedModule} from './shared/shared.module';
 import {AplicationErrorHandle} from './app.error-handler';
-import { UsersComponent } from './users/users.component';
+
 import {UsersModule} from './users/users.module';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
 import {RequestsModule} from './requests/requests.module';
+import { MyRequestsComponent } from './my-requests/my-requests.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RequestDetailComponent
+    RequestDetailComponent,
+    MyRequestsComponent,
   ],
   imports: [
     BrowserModule,

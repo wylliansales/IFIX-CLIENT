@@ -1,3 +1,75 @@
-<p>
-  request-detail works!
-</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="col-lg-12 col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Detalhes da Solicitação: #{{request.id}}</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pull-right">
+                            <button class="btn">Mais</button>
+                            <button (click)="finalizeRequest(request)" class="btn btn-danger">Finalizar</button>
+                            <button class="btn">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="card-content">
+                                <p>{{request.user.name}}</p>
+                                <p>{{request.description}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-success btn-sm pull-right">Novo status +</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="title">Informações da Solicitação</h5>
+                            </div>
+                            <div class="card-content">
+                                <p>Responsável: {{request.attendant.name}}</p>
+                                <p>Departamento: {{request.department.name}}</p>
+                                <p>Criado em: {{request.created_at}}</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="title">Solicitante</h5>
+                            </div>
+                            <div class="card-content">
+                                <p>Nome: {{request.user.name}}</p>
+                                <p>Email: {{request.user.email}}</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="title">Equipamentos</h5>
+                            </div>
+                            <div class="card-content">
+                                <table class="table table-hover">
+                                    <thead class="text-gray">
+                                    <tr>
+                                        <th>Descrição</th>
+                                        <th>Categoria</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let equipment of request.equipaments">
+                                        <td>{{equipment.description}}</td>
+                                        <td>{{equipment.category}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
