@@ -31,4 +31,8 @@ export class UsersService {
         return this.http.put(`${URL_API}/users/block/${user.id}`, user);
     }
 
+    getUserLogin(): Observable<User>{
+        return this.http.get<User>(`${URL_API}/users/userlogin`);
+    }
+
 }

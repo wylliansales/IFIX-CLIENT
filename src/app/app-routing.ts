@@ -10,15 +10,21 @@ import {RequestsOpenComponent} from './requests/requests-open/requests-open.comp
 import {RequestsCloseComponent} from './requests/requests-close/requests-close.component';
 import {MyRequestsComponent} from './my-requests/my-requests.component';
 import {DepartamentsModule} from './departaments/departaments.module';
+import {LoginComponent} from './security/login/login.component';
+import {LoggedInGuard} from './security/loggedin.guard';
 
 export const ROUTES: Routes = [
-    {path: 'panel',  component: RequestsComponent},
+    {path: 'panel',  component: RequestsComponent,
+        canActivate: [LoggedInGuard]},
+    {path: 'login/:to',  component: LoginComponent},
+    {path: 'login',  component: LoginComponent},
     {path: 'users', component: UsersComponent,
         children: [
             {path: '', redirectTo: 'blocked', pathMatch: 'full'},
             {path: 'blocked', component: UsersBlockedComponent},
             {path: 'released', component: UsersReleasedComponent}
-        ]
+        ],
+        canActivate: [LoggedInGuard]
     },
     {path: 'requests', component: RequestsComponent,
         children: [
@@ -27,14 +33,21 @@ export const ROUTES: Routes = [
             {path: 'linked-request', component: RequestsLinkedComponent},
             {path: 'open-request', component: RequestsOpenComponent},
             {path: 'close-request', component: RequestsCloseComponent}
-        ]
+        ],
+        canActivate: [LoggedInGuard]
     },
-    {path: 'requests/detail/:id', component: RequestDetailComponent},
-    {path: 'my-requests', component: MyRequestsComponent},
-    {path: 'status', loadChildren: './status/status.module#StatusModule'},
-    {path: 'sectors', loadChildren: './sectors/sectors.module#SectorsModule'},
-    {path: 'equipments', loadChildren: './equipments/equipments.module#EquipmentsModule'},
-    {path: 'departaments', loadChildren: './departaments/departaments.module#DepartamentsModule'},
+    {path: 'requests/detail/:id', component: RequestDetailComponent,
+        canActivate: [LoggedInGuard]},
+    {path: 'my-requests', component: MyRequestsComponent,
+        canActivate: [LoggedInGuard]},
+    {path: 'status', loadChildren: './status/status.module#StatusModule',
+        canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
+    {path: 'sectors', loadChildren: './sectors/sectors.module#SectorsModule',
+        canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
+    {path: 'equipments', loadChildren: './equipments/equipments.module#EquipmentsModule',
+        canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
+    {path: 'departaments', loadChildren: './departaments/departaments.module#DepartamentsModule',
+        canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
     {path: '',           redirectTo: 'requests', pathMatch: 'full' }
 ]
 

@@ -4,6 +4,7 @@ import {RadioComponent} from './radio/radio.component';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import { SelectComponent } from './select/select.component';
+import {LoggedInGuard} from '../security/loggedin.guard';
 
 
 @NgModule({
@@ -16,14 +17,8 @@ export class SharedModule{
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: SharedModule,
-            providers: [/*RestaurantsService,
-                ShoppingCartService,
-                OrderService,
-                NotificationService,
-                LoginService,
-                LoggedInGuard,
-                LeaveOrderGuard,
-                {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}*/]
+            providers: [LoggedInGuard,
+                /*{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}*/]
         }
     }
 }

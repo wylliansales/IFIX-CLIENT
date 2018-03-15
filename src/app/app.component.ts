@@ -5,6 +5,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
+import {LoginService} from './services/login.service';
 
 declare const $: any;
 
@@ -21,7 +22,8 @@ export class AppComponent {
 
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
-    constructor( public location: Location, private router: Router) {}
+    constructor( public location: Location, private router: Router,
+                 public loginService: LoginService) {}
 
     ngOnInit() {
         $.material.init();
@@ -79,5 +81,9 @@ export class AppComponent {
             bool = true;
         }
         return bool;
+    }
+
+    isLoggedIn(): boolean{
+        return this.loginService.isLoggedIn()
     }
 }
