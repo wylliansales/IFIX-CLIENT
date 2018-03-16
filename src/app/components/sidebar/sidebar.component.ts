@@ -9,14 +9,14 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: 'requests', title: 'Painel',  icon: 'dashboard', class: '' },
-    { path: 'my-requests', title: 'Minhas Solicitações',  icon:'person', class: '' },
-    { path: 'attendants', title: 'Atendentes',  icon:'content_paste', class: '' },
-    { path: 'equipments', title: 'Equipamentos',  icon:'library_books', class: '' },
-    { path: 'sectors', title: 'Setores',  icon:'bubble_chart', class: '' },
-    { path: 'status', title: 'Status',  icon:'location_on', class: '' },
-    { path: 'categories', title: 'Categorias',  icon:'notifications', class: '' },
-    { path: 'departaments', title: 'Departamentos',  icon:'notifications', class: '' },
-    { path: 'users', title: 'Usuários',  icon:'unarchive', class: '' },
+    { path: 'my-requests', title: 'Minhas Solicitações',  icon:'content_paste', class: '' },
+    { path: 'attendants', title: 'Atendentes',  icon:'person', class: '' },
+    { path: 'equipments', title: 'Equipamentos',  icon:'video_label', class: '' },
+    { path: 'sectors', title: 'Setores',  icon:'location_on', class: '' },
+    { path: 'status', title: 'Status',  icon:'show_chart', class: '' },
+    { path: 'categories', title: 'Categorias',  icon:'format_line_spacing', class: '' },
+    { path: 'departaments', title: 'Departamentos',  icon:'select_all', class: '' },
+    { path: 'users', title: 'Usuários',  icon:'assignment_ind', class: '' },
 ];
 
 @Component({
