@@ -28,7 +28,7 @@ export class RequestDetailComponent implements OnInit {
 
     finalizeRequest(request: Request){
         this.resquestsService.finalizeRequest(request).subscribe(response => {
-            this.notification.showNotification(`Selicitação #${response['data'].id} finalizada`, 'success')
+            this.notification.showNotification(`Solicitação #${response['data'].id} finalizada`, 'success')
             this.router.navigate(['/requests']);
         })
     }

@@ -1,39 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-
-import {NotificationsService} from '../services/notifications.service';
+import {DepartmentsService} from '../services/departments.service';
 import {Department} from './department.model';
-import {DepartamentsService} from '../services/departaments.service';
+import {NotificationsService} from '../services/notifications.service';
 
 @Component({
-  selector: 'app-departaments',
-  templateUrl: './departaments.component.html',
-  styleUrls: ['./departaments.component.css']
+  selector: 'app-departments',
+  templateUrl: './departments.component.html',
 })
-export class DepartamentsComponent implements OnInit {
+export class DepartmentsComponent implements OnInit {
 
-    departamens: Department[]
+    departments: Department[]
     meta: any
     back: number = 1
     next: number = 2
 
-    constructor(private departamentsService: DepartamentsService,
+    constructor(private departmentsService: DepartmentsService,
                 private notificationsService: NotificationsService) { }
 
     ngOnInit() {
-        this.departamentsService.getDepartament().subscribe(
+        this.departmentsService.getDepartament().subscribe(
             response => {
-                this.departamens = response['data'];
+                this.departments = response['data'];
                 this.meta = response['meta'];
             }
         );
     }
 
     delete(departament: Department) {
-        this.departamens = this.departamens.filter(s => s !== departament);
+        this.departments = this.departments.filter(d => d !== departament)
         this.meta.total--;
-        this.departamentsService.deleteDepartament(departament).subscribe(response =>
+        this.departmentsService.deleteDepartament(departament).subscribe(response => {
             this.notificationsService.showNotification(`${departament.name} excluído`, 'success')
-        );
+
+        });
     }
 
     edit(sectors: Department) {
@@ -45,9 +44,9 @@ export class DepartamentsComponent implements OnInit {
             this.back--;
             this.next--;
         }
-        this.departamentsService.getDepartament(pag).subscribe(
+        this.departmentsService.getDepartament(pag).subscribe(
             response => {
-                this.departamens = response['data'];
+                this.departments = response['data'];
                 this.meta = response['meta'];
             }
         );
@@ -57,19 +56,13 @@ export class DepartamentsComponent implements OnInit {
         if (this.next < this.meta.last_page)
             this.back++
         this.next++
-        this.departamentsService.getDepartament(pag).subscribe(
+        this.departmentsService.getDepartament(pag).subscribe(
             response => {
-                this.departamens = response['data'];
+                this.departments = response['data'];
                 this.meta = response['meta'];
             }
         )
     }
 
-}
 
-class Meta {
-    current_page: number
-    from: number
-    last_page: number
-    total: number
 }

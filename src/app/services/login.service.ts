@@ -9,6 +9,7 @@ import {Token} from '../security/login/token.model';
 import {Client} from '../security/login/client.model';
 import {Router} from '@angular/router';
 import {User} from '../users/user.model';
+import {UsersService} from './users.service';
 
 @Injectable()
 export class LoginService{
@@ -24,7 +25,8 @@ export class LoginService{
     }
 
     constructor(private http: HttpClient,
-                private router: Router){}
+                private router: Router,
+                private userService: UsersService){}
 
     isLoggedIn(): boolean {
         return this.token !== undefined

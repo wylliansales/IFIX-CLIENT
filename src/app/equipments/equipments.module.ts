@@ -9,8 +9,8 @@ import { EquipmentListComponent } from './equipment-list/equipment-list.componen
 
 const ROUTES: Routes = [
     {path: '', component: EquipmentsComponent},
-    {path: 'new', component: EquipmentFormComponent},
-    {path: 'list', component: EquipmentListComponent}
+    {path: 'new', component: EquipmentFormComponent}
+
 ]
 
 @NgModule({

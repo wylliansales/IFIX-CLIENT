@@ -32,7 +32,7 @@ export class UsersService {
     }
 
     getUserLogin(): Observable<User>{
-        return this.http.get<User>(`${URL_API}/users/userlogin`);
+        return this.http.get<User>(`${URL_API}/users/user/login`);
     }
 
 }

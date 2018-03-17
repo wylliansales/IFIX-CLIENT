@@ -7,15 +7,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let statu of status">
-        <td>{{statu.name}}</td>
-        <td>{{statu.description}}</td>
+    <tr *ngFor="let category of categories">
+        <td>{{category.name}}</td>
+        <td>{{category.description}}</td>
         <td class="td-actions text-right">
-            <button (click)="emitEdit(statu)" type="button" rel="tooltip" title="Edit Task"
+            <button (click)="emitEdit(category)" type="button" rel="tooltip" title="Edit Task"
                     class="btn btn-primary btn-simple btn-xs">
                 <i class="material-icons">edit</i>
             </button>
-            <button (click)="emitDelete(statu)" type="button" rel="tooltip" title="Remove"
+            <button (click)="emitDelete(category)" type="button" rel="tooltip" title="Remove"
                     class="btn btn-danger btn-simple btn-xs">
                 <i class="material-icons">close</i>
             </button>

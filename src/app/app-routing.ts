@@ -9,13 +9,10 @@ import {RequestsLinkedComponent} from './requests/requests-linked/requests-linke
 import {RequestsOpenComponent} from './requests/requests-open/requests-open.component';
 import {RequestsCloseComponent} from './requests/requests-close/requests-close.component';
 import {MyRequestsComponent} from './my-requests/my-requests.component';
-import {DepartamentsModule} from './departaments/departaments.module';
 import {LoginComponent} from './security/login/login.component';
 import {LoggedInGuard} from './security/loggedin.guard';
 
 export const ROUTES: Routes = [
-    {path: 'panel',  component: RequestsComponent,
-        canActivate: [LoggedInGuard]},
     {path: 'login/:to',  component: LoginComponent},
     {path: 'login',  component: LoginComponent},
     {path: 'users', component: UsersComponent,
@@ -46,9 +43,11 @@ export const ROUTES: Routes = [
         canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
     {path: 'equipments', loadChildren: './equipments/equipments.module#EquipmentsModule',
         canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
-    {path: 'departaments', loadChildren: './departaments/departaments.module#DepartamentsModule',
+    {path: 'departments', loadChildren: './departments/departments.module#DepartmentsModule',
         canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
-    {path: '',           redirectTo: 'requests', pathMatch: 'full' }
+    {path: 'categories', loadChildren: './categories/categories.module#CategoriesModule',
+        canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
+    {path: '',           redirectTo: 'requests', pathMatch: 'full'}
 ]
 
 

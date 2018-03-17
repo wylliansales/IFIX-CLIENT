@@ -3,7 +3,7 @@
     <div class="col-lg-12 col-md-12">
       <div class="row">
         <div class="col-md-5">
-          <a [routerLink]="['/categories/new']" class="btn">Novo Categoria +</a>
+          <a [routerLink]="['/departments/new']" class="btn">Novo Departamento +</a>
         </div>
         <div class="col-md-7">
           <div class="form-group form-black is-empty" style="margin-top: 16px">
@@ -15,10 +15,10 @@
       <div class="card">
         <div class="card-content">
 
-          <app-category-list [categories]="categories" (edit)="edit($event)"
-                                (delete)="delete($event)"></app-category-list>
+          <app-departments-list [departments]="departments" (edit)="edit($event)"
+                               (delete)="delete($event)"></app-departments-list>
 
-          <nav aria-label="Page navigation" *ngIf="categories?.length > 0">
+          <nav aria-label="Page navigation" *ngIf="departments?.length > 0">
             <ul class="pagination">
               <li>
                 <a (click)="backPage(back)" aria-label="Previous">
@@ -37,7 +37,7 @@
             <p class="text-right">Total de Registos: {{meta.total}}</p>
           </nav>
 
-          <div class="col-md-12" *ngIf="!(categories?.length > 0)">
+          <div class="col-md-12" *ngIf="!(departments?.length > 0)">
             <p class="lead text-center">
               Não foram encontrados itens para sua busca.
             </p>

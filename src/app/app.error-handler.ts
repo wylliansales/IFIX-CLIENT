@@ -17,7 +17,7 @@ export class AplicationErrorHandle extends ErrorHandler{
         if(errorResponse instanceof HttpErrorResponse) {
             const message = errorResponse.message
             const messageServer = errorResponse.error.message
-            //console.log(errorResponse)
+            console.log(errorResponse)
             this.zone.run(()=>{
                 switch (errorResponse.status) {
                     case 400:

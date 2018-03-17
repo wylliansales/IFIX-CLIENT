@@ -1,8 +1,8 @@
-import {Department} from '../departaments/department.model';
 import {User} from '../users/user.model';
 import {Attendant} from '../attendants/attendant.model';
 import {Status} from '../status/status.model';
 import {Equipment} from '../equipments/equipment.model';
+import {Department} from '../departments/department.model';
 
 export class Request{
     constructor(

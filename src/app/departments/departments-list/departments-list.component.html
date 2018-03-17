@@ -1,0 +1,25 @@
+<table class="table table-hover">
+  <thead class="text-gray">
+  <tr>
+    <th>Nome</th>
+    <th>Descrição</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let department of departments">
+    <td>{{department.name}}</td>
+    <td>{{department.description}}</td>
+    <td class="td-actions text-right">
+      <button (click)="emitEdit(department)" type="button" rel="tooltip" title="Edit Task"
+              class="btn btn-primary btn-simple btn-xs">
+        <i class="material-icons">edit</i>
+      </button>
+      <button (click)="emitDelete(department)" type="button" rel="tooltip" title="Remove"
+              class="btn btn-danger btn-simple btn-xs">
+        <i class="material-icons">close</i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

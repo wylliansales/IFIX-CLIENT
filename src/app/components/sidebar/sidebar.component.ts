@@ -15,7 +15,7 @@ export const ROUTES: RouteInfo[] = [
     { path: 'sectors', title: 'Setores',  icon:'location_on', class: '' },
     { path: 'status', title: 'Status',  icon:'show_chart', class: '' },
     { path: 'categories', title: 'Categorias',  icon:'format_line_spacing', class: '' },
-    { path: 'departaments', title: 'Departamentos',  icon:'select_all', class: '' },
+    { path: 'departments', title: 'Departamentos',  icon:'select_all', class: '' },
     { path: 'users', title: 'Usuários',  icon:'assignment_ind', class: '' },
 ];
 

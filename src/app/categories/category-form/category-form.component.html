@@ -1,0 +1,30 @@
+<div class="main-content">
+  <div class="conteiner-fluid">
+    <div class="card">
+      <div class="card-content">
+        <form [formGroup]="categoryForm" novalidate>
+          <div class="col-lg-12 col-md-12">
+            <h3>Novo Setor</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <app-input-container errorMessage="Campo obrigatório" label="Nome">
+                  <input class="form-control" formControlName="name" autocomplete="off">
+                </app-input-container>
+              </div>
+              <div class="col-md-6">
+                <app-input-container errorMessage="Campo obrigatório" label="Descrição">
+                  <input class="form-control" formControlName="description" autocomplete="off">
+                </app-input-container>
+              </div>
+            </div>
+            <div class="row">
+              <button (click)="addCategory(categoryForm.value)" class="btn btn-success btn-lg pull-right"
+                      [disabled]="categoryForm.invalid">Salvar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
