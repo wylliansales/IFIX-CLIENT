@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 
 import {URL_API} from '../app.api';
 import {Equipment} from '../equipments/equipment.model';
+import {Sector} from '../sectors/sector.model';
 
 
 
@@ -32,5 +33,10 @@ export class EquipmentsService{
     deleteEquipment(equipment: Equipment | number): Observable<Equipment> {
         const id = typeof equipment === 'number' ? equipment : equipment.id;
         return this.http.delete<Equipment>(`${URL_API}/equipments/${id}`)
+    }
+
+    searchEquipment(value: any): Observable<Equipment[]>{
+        const term = value !== '' ? value : '%';
+        return this.http.get<Equipment[]>(`${URL_API}/equipments/search/${term}`)
     }
 }

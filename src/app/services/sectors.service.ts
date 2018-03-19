@@ -32,4 +32,9 @@ export class SectorsService{
         const id = typeof sector === 'number' ? sector : sector.id;
         return this.http.delete<Sector>(`${URL_API}/sectors/${id}`)
     }
+
+    searchSector(value: any): Observable<Sector[]>{
+        const term = value !== '' ? value : '%';
+        return this.http.get<Sector[]>(`${URL_API}/sectors/search/${term}`)
+    }
 }

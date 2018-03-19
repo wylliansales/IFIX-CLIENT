@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 import {NotificationsService} from '../services/notifications.service';
 import {EquipmentsService} from '../services/equipments.service';
+
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/from';
+import {Observable} from 'rxjs/Observable';
 
 import {Equipment} from './equipment.model';
 
@@ -17,11 +25,25 @@ export class EquipmentsComponent implements OnInit {
     meta: Meta
     back: number = 1
     next: number = 2
+    searchForm: FormGroup
+    searchEquipment: FormControl
 
     constructor(private equipmentsService: EquipmentsService,
-                private notificationsService: NotificationsService) { }
+                private notificationsService: NotificationsService,
+                private fb: FormBuilder) { }
 
     ngOnInit() {
+        this.searchEquipment = this.fb.control('');
+        this.searchForm = this.fb.group({
+            searchEquipment: this.searchEquipment
+        })
+
+        this.searchEquipment.valueChanges
+            .debounceTime(500)
+            .distinctUntilChanged()
+            .switchMap(searchTerm => this.equipmentsService.searchEquipment(searchTerm))
+            .subscribe(equipment => this.equipments = equipment['data'])
+
         this.equipmentsService.getEquipment().subscribe(
             response => {
                 this.equipments = response['data'];

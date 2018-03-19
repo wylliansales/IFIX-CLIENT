@@ -33,7 +33,6 @@ export class StatusService{
 
     searchStatus(value: any): Observable<Status[]>{
         const term = value !== '' ? value : '%';
-        console.log(term)
         return this.http.get<Status[]>(`${URL_API}/status/search/${term}`)
     }
 }

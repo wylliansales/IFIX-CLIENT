@@ -18,8 +18,8 @@ export class LoginService{
     token: Token
     client: Client = {
         grant_type: 'password',
-        client_id: 4,
-        client_secret: '8Jws2iKBgsk9Jhrvqj0scsZW4RTIPULmH29CIwNT',
+        client_id: 6,  //4,
+        client_secret: 'mvjb51SDVuqbw5azGDIdfpCHmuWBPOYa3x3lax86', //'8Jws2iKBgsk9Jhrvqj0scsZW4RTIPULmH29CIwNT',
         username: '',
         password: ''
     }

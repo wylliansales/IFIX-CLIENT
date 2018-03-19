@@ -7,7 +7,9 @@
         </div>
         <div class="col-md-7">
           <div class="form-group form-black is-empty" style="margin-top: 16px">
-            <input type="text" class="form-control" placeholder="Search">
+          <form [formGroup]="searchForm">
+            <input type="text" formControlName="searchEquipment" class="form-control" placeholder="Buscar Equipamento">
+            </form>
             <span class="material-input"></span>
           </div>
         </div>
@@ -26,7 +28,7 @@
                 </a>
               </li>
               <li>
-                <a> {{meta.from}} </a>
+                <a> {{pag}} </a>
               </li>
               <li>
                 <a (click)="nextPag(next)" aria-label="Next">
