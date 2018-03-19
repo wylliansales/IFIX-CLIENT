@@ -1,3 +1,10 @@
+<ng-progress
+        [positionUsing]="'marginLeft'"
+        [direction]="'leftToRightIncreased'"
+        [trickleSpeed]="500"
+        [thick]="true"
+        [ease]="'easeInSine'"
+></ng-progress>
 <div class="wrapper">
     <div class="sidebar" data-color='red' data-image="">
         <app-sidebar [hidden]="!isLoggedIn()"></app-sidebar>

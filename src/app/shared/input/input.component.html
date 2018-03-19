@@ -3,8 +3,10 @@
     <label class="control-label">{{label}}</label>
 
     <ng-content></ng-content>
+    <span class="form-control-feedback" *ngIf="showTip && hasSuccess()">
+        <i class="material-icons">done</i>
+    </span>
+    <span class="material-icons form-control-feedback" *ngIf="showTip && hasError()">clear</span>
 </div>
-<span class="help-block text-success" *ngIf="showTip && hasSuccess()"><i
-        class="fa fa-check"></i> Ok</span>
-<span class="help-block text-danger" *ngIf="showTip && hasError()"><i
-        class="fa fa-remove"></i>{{errorMessage}}</span>
+<!--<span class="help-block text-danger" *ngIf="showTip && hasError()"><i-->
+        <!--class="fa fa-remove"></i>{{errorMessage}}</span>-->

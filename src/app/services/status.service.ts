@@ -31,4 +31,9 @@ export class StatusService{
         return this.http.delete<Status>(`${URL_API}/status/${id}`);
     }
 
+    searchStatus(value: any): Observable<Status[]>{
+        const term = value !== '' ? value : '%';
+        console.log(term)
+        return this.http.get<Status[]>(`${URL_API}/status/search/${term}`)
+    }
 }

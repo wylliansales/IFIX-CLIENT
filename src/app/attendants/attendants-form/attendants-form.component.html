@@ -1,3 +1,45 @@
-<p>
-  attendants-form works!
-</p>
+
+        <h3>Novo Atendente</h3>
+        <form [formGroup]="attendantForm" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <app-input-container errorMessage="Campo obrigatório" label="Nome">
+                    <input class="form-control" formControlName="name" autocomplete="off">
+                </app-input-container>
+            </div>
+            <div class="col-md-6">
+                <app-input-container errorMessage="Campo obrigatório" label="Email">
+                    <input class="form-control" formControlName="email" autocomplete="off">
+                </app-input-container>
+            </div>
+            <div class="col-md-6">
+                <app-input-container errorMessage="Campo obrigatório" label="Confirme o Email">
+                    <input class="form-control" formControlName="emailConfirmation" autocomplete="off">
+                </app-input-container>
+            </div>
+            <div class="col-md-6">
+                <app-input-container errorMessage="Campo obrigatório" label="Senha">
+                    <input class="form-control" formControlName="password" autocomplete="off">
+                </app-input-container>
+            </div>
+            <div class="col-md-6">
+                <app-input-container errorMessage="Campo obrigatório" label="Confirme a senha">
+                    <input class="form-control" formControlName="password" autocomplete="off">
+                </app-input-container>
+            </div>
+            <div class="col-md-6">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="optionsCheckboxes" checked>
+                        Coordenador
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button (click)="addCategory(attendantForm.value)" class="btn btn-success btn-lg pull-right"
+                    [disabled]="attendantForm.invalid">Salvar
+            </button>
+        </div>
+        </form>
+

@@ -5,6 +5,7 @@ import {CategoriesComponent} from './categories.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import {SharedModule} from '../shared/shared.module';
+import {CategoryComponent} from './category/category.component';
 
 const ROUTES: Routes = [
     {path: '', component: CategoriesComponent},
@@ -12,7 +13,7 @@ const ROUTES: Routes = [
 ]
 
 @NgModule({
-    declarations: [CategoriesComponent, CategoryFormComponent, CategoryListComponent],
+    declarations: [CategoriesComponent, CategoryFormComponent, CategoryListComponent, CategoryComponent],
     imports: [SharedModule, RouterModule.forChild(ROUTES)]
 })
 export class CategoriesModule{}

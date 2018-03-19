@@ -3,7 +3,15 @@ import {Component, OnInit} from '@angular/core';
 import {StatusService} from '../services/status.service';
 import {NotificationsService} from '../services/notifications.service';
 
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import {Observable} from 'rxjs/Observable';
+
+
 import {Status} from './status.model';
+import {Subject} from 'rxjs/Subject';
+
 
 @Component({
     selector: 'app-status',
@@ -13,9 +21,10 @@ export class StatusComponent implements OnInit {
 
     status: Status[]
     meta: Meta
+    pag: number = 1
     back: number = 1
     next: number = 2
-
+    private searchText$ = new Subject<string>()
 
     constructor(private statusService: StatusService,
                 private notificationsService: NotificationsService) {
@@ -28,6 +37,22 @@ export class StatusComponent implements OnInit {
                 this.meta = response['meta'];
             }
         );
+
+        this.searchText$
+            .debounceTime(500)
+            .distinctUntilChanged()
+            .switchMap(term =>
+                this.statusService.searchStatus(term))
+            .subscribe(status => {
+                this.status = status['data']
+                this.meta.total = this.status.length
+            });
+
+
+    }
+
+    search(value: string) {
+        this.searchText$.next(value)
     }
 
     delete(status: Status) {
@@ -46,7 +71,9 @@ export class StatusComponent implements OnInit {
         if (this.back > 1) {
             this.back--;
             this.next--;
+            this.pag--;
         }
+        this.pag = this.next - this.back
         this.statusService.getStatus(pag).subscribe(
             response => {
                 this.status = response['data'];
@@ -56,9 +83,13 @@ export class StatusComponent implements OnInit {
     }
 
     nextPag(pag: number): void{
-        if (this.next < this.meta.last_page)
-        this.back++
-        this.next++
+        if (this.next < this.meta.last_page){
+            this.back++
+            this.next++
+            this.pag++
+        }
+
+
         this.statusService.getStatus(pag).subscribe(
             response => {
                 this.status = response['data'];

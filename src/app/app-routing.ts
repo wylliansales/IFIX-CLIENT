@@ -47,6 +47,8 @@ export const ROUTES: Routes = [
         canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
     {path: 'categories', loadChildren: './categories/categories.module#CategoriesModule',
         canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
+    {path: 'attendants', loadChildren: './attendants/attendants.module#AttendantsModule',
+        canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
     {path: '',           redirectTo: 'requests', pathMatch: 'full'}
 ]
 

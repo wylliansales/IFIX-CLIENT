@@ -12,7 +12,7 @@ import {CategoriesService} from '../services/categories.service';
 export class CategoriesComponent implements OnInit {
 
     categories: Category[]
-    meta: any
+    meta: Meta
     back: number = 1
     next: number = 2
 
@@ -67,4 +67,12 @@ export class CategoriesComponent implements OnInit {
     }
 
 
+}
+
+
+class Meta {
+    current_page: number
+    from: number
+    last_page: number
+    total: number
 }

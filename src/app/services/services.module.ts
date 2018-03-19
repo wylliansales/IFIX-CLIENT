@@ -8,6 +8,7 @@ import {UsersService} from './users.service';
 import {RequestsService} from './requests.service';
 import {LoginService} from './login.service';
 import {DepartmentsService} from './departments.service';
+import {AttendantsService} from './attendants.service';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {DepartmentsService} from './departments.service';
                 UsersService,
                 RequestsService,
                 DepartmentsService,
-                LoginService]
+                LoginService,
+                AttendantsService]
 })
 
 export class ServicesModule{}

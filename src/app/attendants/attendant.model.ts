@@ -1,5 +1,9 @@
+import {Department} from '../departments/department.model';
+
 export interface Attendant{
     id: number
     name: string
-    description: string
+    email: string
+    coordinator: boolean
+    departments: Department[]
 }

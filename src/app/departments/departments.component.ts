@@ -10,7 +10,7 @@ import {NotificationsService} from '../services/notifications.service';
 export class DepartmentsComponent implements OnInit {
 
     departments: Department[]
-    meta: any
+    meta: Meta
     back: number = 1
     next: number = 2
 
@@ -20,8 +20,7 @@ export class DepartmentsComponent implements OnInit {
     ngOnInit() {
         this.departmentsService.getDepartament().subscribe(
             response => {
-                this.departments = response['data'];
-                this.meta = response['meta'];
+                this.departments = response['data']
             }
         );
     }
@@ -65,4 +64,12 @@ export class DepartmentsComponent implements OnInit {
     }
 
 
+}
+
+
+class Meta {
+    current_page: number
+    from: number
+    last_page: number
+    total: number
 }

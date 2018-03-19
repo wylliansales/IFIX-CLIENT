@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api: 'http://192.168.10.10/api'
+  api: 'https://app-serve.herokuapp.com/api'
 };

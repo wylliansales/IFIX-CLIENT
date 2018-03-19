@@ -21,6 +21,8 @@ import {UsersModule} from './users/users.module';
 import {RequestDetailComponent} from './request-detail/request-detail.component';
 import {RequestsModule} from './requests/requests.module';
 import {MyRequestsComponent} from './my-requests/my-requests.component';
+import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
+
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import {MyRequestsComponent} from './my-requests/my-requests.component';
     ],
     imports: [
         BrowserModule,
+        NgProgressModule,
         ReactiveFormsModule,
         SharedModule.forRoot(),
         ServicesModule,

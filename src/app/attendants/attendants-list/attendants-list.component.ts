@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Attendant} from '../../attendants/attendant.model';
 
 @Component({
   selector: 'app-attendants-list',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AttendantsListComponent implements OnInit {
 
-  constructor() { }
+    @Input() attendants: Attendant[];
+    @Output() delete = new EventEmitter<Attendant>();
+    @Output() edit = new EventEmitter<Attendant>();
 
-  ngOnInit() {
-  }
 
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
+
+    emitDelete(department: Attendant) {
+        this.delete.emit(department);
+    }
+
+    emitEdit(department: Attendant) {
+        this.edit.emit(department);
+    }
 }
