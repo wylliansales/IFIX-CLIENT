@@ -22,8 +22,9 @@ export class StatusService{
         return this.http.post<any>(`${URL_API}/status`, status)
     }
 
-    getStatusById(search: string){
-
+    getStatusById(id: string): Observable<Status>{
+        console.log(id)
+        return this.http.get<Status>(`${URL_API}/status/${id}`)
     }
 
     deleteStatus(status: Status | number): Observable<Status> {
@@ -34,5 +35,9 @@ export class StatusService{
     searchStatus(value: any): Observable<Status[]>{
         const term = value !== '' ? value : '%';
         return this.http.get<Status[]>(`${URL_API}/status/search/${term}`)
+    }
+
+    updateStatus(status: Status, id: string): Observable<Status> {
+        return this.http.put<Status>(`${URL_API}/status/${id}`, status)
     }
 }

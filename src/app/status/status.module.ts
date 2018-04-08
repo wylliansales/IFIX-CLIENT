@@ -11,7 +11,8 @@ import { StatusListComponent } from './status-list/status-list.component';
 
 const ROUTES: Routes = [
     {path: '', component: StatusComponent},
-    {path: 'new', component: StatusFormComponent}
+    {path: 'new', component: StatusFormComponent},
+    {path: 'edit/:id', component: StatusFormComponent}
     ]
 
 @NgModule({

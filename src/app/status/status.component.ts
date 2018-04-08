@@ -11,6 +11,7 @@ import {Observable} from 'rxjs/Observable';
 
 import {Status} from './status.model';
 import {Subject} from 'rxjs/Subject';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class StatusComponent implements OnInit {
     private searchText$ = new Subject<string>()
 
     constructor(private statusService: StatusService,
-                private notificationsService: NotificationsService) {
+                private notificationsService: NotificationsService,
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -64,8 +66,9 @@ export class StatusComponent implements OnInit {
     }
 
     edit(status: Status) {
-        console.log(`edit #{status.name}`)
+        this.router.navigate([`/status/edit/${btoa(status.id)}`])
     }
+
 
     backPage(pag: number): void{
         if (this.back > 1) {
