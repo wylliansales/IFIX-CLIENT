@@ -23,7 +23,6 @@ export class StatusService{
     }
 
     getStatusById(id: string): Observable<Status>{
-        console.log(id)
         return this.http.get<Status>(`${URL_API}/status/${id}`)
     }
 

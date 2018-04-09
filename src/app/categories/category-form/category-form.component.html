@@ -4,15 +4,15 @@
       <div class="card-content">
         <form [formGroup]="categoryForm" novalidate>
           <div class="col-lg-12 col-md-12">
-            <h3>Novo Setor</h3>
+            <h3>Nova Categoria</h3>
             <div class="row">
               <div class="col-md-6">
-                <app-input-container errorMessage="Campo obrigatório" label="Nome">
+                <app-input-container errorMessage="Campo obrigatório" label="Nome" [value]="id">
                   <input class="form-control" formControlName="name" autocomplete="off">
                 </app-input-container>
               </div>
               <div class="col-md-6">
-                <app-input-container errorMessage="Campo obrigatório" label="Descrição">
+                <app-input-container errorMessage="Campo obrigatório" label="Descrição" [value]="id">
                   <input class="form-control" formControlName="description" autocomplete="off">
                 </app-input-container>
               </div>

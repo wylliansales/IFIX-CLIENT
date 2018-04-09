@@ -10,6 +10,7 @@ import {Observable} from 'rxjs/Observable';
 
 import {Sector} from './sector.model';
 import {Subject} from 'rxjs/Subject';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class SectorsComponent implements OnInit {
     private searchSector$ = new Subject<string>()
 
   constructor(private sectorsService: SectorsService,
-              private notificationsService: NotificationsService) { }
+              private notificationsService: NotificationsService,
+              private router: Router) { }
 
   ngOnInit() {
       this.sectorsService.getSector().subscribe(
@@ -59,8 +61,8 @@ export class SectorsComponent implements OnInit {
         );
     }
 
-    edit(sectors: Sector) {
-        console.log(`edit #{status.name}`)
+    edit(sector: Sector) {
+        this.router.navigate([`/sectors/edit/${btoa(sector.id.toString())}`])
     }
 
     backPage(pag: number): void{

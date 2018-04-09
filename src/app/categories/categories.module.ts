@@ -9,7 +9,8 @@ import {CategoryComponent} from './category/category.component';
 
 const ROUTES: Routes = [
     {path: '', component: CategoriesComponent},
-    {path: 'new', component: CategoryFormComponent}
+    {path: 'new', component: CategoryFormComponent},
+    {path: 'edit/:id', component: CategoryFormComponent}
 ]
 
 @NgModule({

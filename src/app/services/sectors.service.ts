@@ -24,8 +24,8 @@ export class SectorsService{
         return this.http.post<any>(`${URL_API}/sectors`, sector)
     }
 
-    getStatusById(search: string){
-
+    getSectorById(id: number): Observable<Sector>{
+       return  this.http.get<Sector>(`${URL_API}/sectors/${id}`)
     }
 
     deleteSector(sector: Sector | number): Observable<Sector> {
@@ -36,5 +36,9 @@ export class SectorsService{
     searchSector(value: any): Observable<Sector[]>{
         const term = value !== '' ? value : '%';
         return this.http.get<Sector[]>(`${URL_API}/sectors/search/${term}`)
+    }
+
+    updateSector(sector: Sector, id: number): Observable<Sector>{
+        return this.http.put<Sector>(`${URL_API}/sectors/${id}`, sector)
     }
 }

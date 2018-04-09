@@ -24,7 +24,7 @@ export class DepartmentsService{
         return this.http.post<any>(`${URL_API}/departments`, departament)
     }
 
-    getSDepartmantById(search: string){
+    getDepartmantById(search: string){
 
     }
 

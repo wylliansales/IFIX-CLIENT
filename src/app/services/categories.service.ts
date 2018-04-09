@@ -25,12 +25,16 @@ export class CategoriesService{
         return this.http.post<any>(`${URL_API}/categories`, category)
     }
 
-    getCategoryById(search: string){
-
+    getCategoryById(id: number): Observable<Category>{
+        return this.http.get<Category>(`${URL_API}/categories/${id}`)
     }
 
     deleteCategory(category: Category | number): Observable<Category> {
         const id = typeof category === 'number' ? category : category.id;
         return this.http.delete<Category>(`${URL_API}/categories/${id}`)
+    }
+
+    updateCategory(category: Category, id: number): Observable<Category>{
+        return this.http.put<Category>(`${URL_API}/categories/${id}`, category)
     }
 }

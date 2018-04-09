@@ -66,7 +66,7 @@ export class StatusComponent implements OnInit {
     }
 
     edit(status: Status) {
-        this.router.navigate([`/status/edit/${btoa(status.id)}`])
+        this.router.navigate([`/status/edit/${btoa(status.id.toString())}`])
     }
 
 
@@ -91,8 +91,6 @@ export class StatusComponent implements OnInit {
             this.next++
             this.pag++
         }
-
-
         this.statusService.getStatus(pag).subscribe(
             response => {
                 this.status = response['data'];

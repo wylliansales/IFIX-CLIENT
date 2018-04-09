@@ -7,8 +7,9 @@ import { SectorsListComponent } from './sectors-list/sectors-list.component';
 import { SectorsFormComponent } from './sectors-form/sectors-form.component';
 
 const ROUTES: Routes = [
-    {path: '', component: SectorsComponent},
-    {path: 'new', component: SectorsFormComponent}
+        {path: '', component: SectorsComponent},
+        {path: 'new', component: SectorsFormComponent},
+        {path: 'edit/:id', component: SectorsFormComponent}
     ]
 
 @NgModule({

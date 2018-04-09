@@ -37,8 +37,8 @@ export class StatusFormComponent implements OnInit {
         if(this.id){
             this.statusService.updateStatus(status, this.id)
                 .subscribe((response) => {
-                    if(response.error){
-                        console.log(response.error_description)
+                    if(response['error']){
+                        console.log(response['error_description'])
                     } else {
                         this.notificationsService.showNotification(`Status ${response['data'].name} atualizado com sucesso!`, 'success')
                     }
@@ -63,8 +63,8 @@ export class StatusFormComponent implements OnInit {
         if(id){
            this.statusService.getStatusById(id).subscribe(response => {
                this.stForm.setValue({
-                   name: response.data.name
-                   description: response.data.description
+                   name: response['data'].name,
+                   description: response['data'].description
                })
            })
         }

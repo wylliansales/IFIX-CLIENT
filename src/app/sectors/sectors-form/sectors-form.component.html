@@ -7,12 +7,12 @@
             <h3>Novo Setor</h3>
             <div class="row">
               <div class="col-md-6">
-                <app-input-container errorMessage="Campo obrigatório" label="Nome">
+                <app-input-container errorMessage="Campo obrigatório" label="Nome" [value]="id">
                   <input class="form-control" formControlName="name" autocomplete="off">
                 </app-input-container>
               </div>
               <div class="col-md-6">
-                <app-input-container errorMessage="Campo obrigatório" label="Descrição">
+                <app-input-container errorMessage="Campo obrigatório" label="Descrição" [value]="id">
                   <input class="form-control" formControlName="description" autocomplete="off">
                 </app-input-container>
               </div>
