@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+
 import {DepartmentsService} from '../services/departments.service';
-import {Department} from './department.model';
 import {NotificationsService} from '../services/notifications.service';
+
+import {Subject} from 'rxjs/Subject'
+
+import {Department} from './department.model';
 
 @Component({
   selector: 'app-departments',
@@ -13,37 +18,42 @@ export class DepartmentsComponent implements OnInit {
     meta: Meta
     back: number = 1
     next: number = 2
+    pag: number = 1
+    private searchDepartment = new Subject<string>() 
 
     constructor(private departmentsService: DepartmentsService,
-                private notificationsService: NotificationsService) { }
+                private notificationsService: NotificationsService,
+                private router: Router) { }
 
     ngOnInit() {
-        this.departmentsService.getDepartament().subscribe(
+        this.departmentsService.getDepartment().subscribe(
             response => {
                 this.departments = response['data']
+                this.meta = response['meta']
             }
         );
     }
 
-    delete(departament: Department) {
-        this.departments = this.departments.filter(d => d !== departament)
+    delete(department: Department) {
+        this.departments = this.departments.filter(d => d !== department)
         this.meta.total--;
-        this.departmentsService.deleteDepartament(departament).subscribe(response => {
-            this.notificationsService.showNotification(`${departament.name} excluído`, 'success')
+        this.departmentsService.deleteDepartment(department).subscribe(response => {
+            this.notificationsService.showNotification(`${department.name} excluído`, 'success')
 
         });
     }
 
-    edit(sectors: Department) {
-        console.log(`edit #{status.name}`)
+    edit(department: Department) {
+        this.router.navigate([`/departments/edit/${btoa(department.id.toString())}`])
     }
 
     backPage(pag: number): void{
         if (this.back > 1) {
             this.back--;
             this.next--;
+            this.pag--;
         }
-        this.departmentsService.getDepartament(pag).subscribe(
+        this.departmentsService.getDepartment(pag).subscribe(
             response => {
                 this.departments = response['data'];
                 this.meta = response['meta'];
@@ -52,10 +62,13 @@ export class DepartmentsComponent implements OnInit {
     }
 
     nextPag(pag: number): void{
-        if (this.next < this.meta.last_page)
+        if (this.next < this.meta.last_page){
             this.back++
-        this.next++
-        this.departmentsService.getDepartament(pag).subscribe(
+            this.next++
+            this.pag++;
+        }
+
+        this.departmentsService.getDepartment(pag).subscribe(
             response => {
                 this.departments = response['data'];
                 this.meta = response['meta'];

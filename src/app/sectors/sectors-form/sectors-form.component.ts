@@ -14,7 +14,7 @@ export class SectorsFormComponent implements OnInit {
 
     sectorForm: FormGroup
     sectors: Sector
-    id: string
+    id: number
 
   constructor(private fb: FormBuilder,
               private sectorsService: SectorsService,
@@ -26,16 +26,16 @@ export class SectorsFormComponent implements OnInit {
             name: this.fb.control('',[Validators.required]),
             description: this.fb.control('',[Validators.required])
         })
-      this.id = atob(this.activatedRoute.snapshot.params['id']) || undefined
+      this.id = parseInt(atob(this.activatedRoute.snapshot.params['id'])) || undefined
       this.getSector(this.id)
   }
 
     addSector(sector: Sector) {
         if(this.id){
-            this.sectorsService.updateSector(sector)
+            this.sectorsService.updateSector(sector, this.id)
                 .subscribe((response) => {
-                    if(response.error){
-                        console.log(response.error_description)
+                    if(response['error']){
+                        console.log(response['error_description'])
                     } else {
                         this.notificationsService.showNotification(`Setor ${response['data'].name} atualizado com sucesso!`, 'success')
                     }
@@ -43,8 +43,8 @@ export class SectorsFormComponent implements OnInit {
         } else {
             this.sectorsService.addSector(sector)
                 .subscribe((response) => {
-                    if(response.error){
-                        console.log(response.error_description)
+                    if(response['error']){
+                        console.log(response['error_description'])
                     } else {
                         this.notificationsService.showNotification(`Setor ${response['data'].name} cadastrado com sucesso!`, 'success')
                     }
@@ -55,7 +55,7 @@ export class SectorsFormComponent implements OnInit {
         this.sectorForm.reset()
     }
 
-    getSector(id: string) {
+    getSector(id: number) {
         if(id){
             this.sectorsService.getSectorById(id).subscribe(response => {
                 this.sectorForm.setValue({

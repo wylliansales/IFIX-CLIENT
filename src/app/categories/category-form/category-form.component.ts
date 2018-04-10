@@ -16,7 +16,7 @@ export class CategoryFormComponent implements OnInit {
 
     categoryForm: FormGroup
     categories: Category[]
-    id: string
+    id: number
 
     constructor(private fb: FormBuilder,
                 private categoriesService: CategoriesService,
@@ -28,7 +28,7 @@ export class CategoryFormComponent implements OnInit {
             name: this.fb.control('',[Validators.required]),
             description: this.fb.control('',[Validators.required])
         })
-        this.id = atob(this.activatedRoute.snapshot.params['id']) || undefined
+        this.id = parseInt(atob(this.activatedRoute.snapshot.params['id'])) || undefined
         this.getCategory(this.id)
     }
 
@@ -36,8 +36,8 @@ export class CategoryFormComponent implements OnInit {
         if(this.id){
             this.categoriesService.updateCategory(category, this.id)
                 .subscribe((response) => {
-                    if(response.error){
-                        console.log(response.error_description)
+                    if(response['error']){
+                        console.log(response['error_description'])
                     } else {
                         this.notificationsService.showNotification(`Categoria ${response['data'].name} atualizada com sucesso!`, 'success')
                     }
@@ -45,8 +45,8 @@ export class CategoryFormComponent implements OnInit {
         } else {
             this.categoriesService.addCategory(category)
                 .subscribe((response) => {
-                    if(response.error){
-                        console.log(response.error_description)
+                    if(response['error']){
+                        console.log(response['error_description'])
                     } else {
                         this.notificationsService.showNotification(`Categoria ${response['data'].name} cadastrado com sucesso!`, 'success')
                     }
@@ -57,7 +57,7 @@ export class CategoryFormComponent implements OnInit {
         this.categoryForm.reset()
     }
 
-    getCategory(id: string){
+    getCategory(id: number){
         if(id){
             this.categoriesService.getCategoryById(id).subscribe(response => {
                 this.categoryForm.setValue({

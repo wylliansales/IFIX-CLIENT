@@ -19,7 +19,7 @@ export class LoginService{
     client: Client = {
         grant_type: 'password',
         client_id: 2,  //4,
-        client_secret: 'jLNCuyZ2R8sM8JCjMemfVRrLivUDLX12wpUV3VY3', //'8Jws2iKBgsk9Jhrvqj0scsZW4RTIPULmH29CIwNT',
+        client_secret: '8WQL5gjigD8vtNxe9KDdec03KwJpvVayAFttglem', //'8Jws2iKBgsk9Jhrvqj0scsZW4RTIPULmH29CIwNT',
         username: '',
         password: ''
     }

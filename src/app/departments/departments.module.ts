@@ -7,7 +7,8 @@ import {DepartmentsFormComponent} from './departments-form/departments-form.comp
 
 const ROUTES: Routes = [
     {path: '', component: DepartmentsComponent},
-    {path: 'new', component: DepartmentsFormComponent}
+    {path: 'new', component: DepartmentsFormComponent},
+    {path: 'edit/:id', component: DepartmentsFormComponent}
 ]
 
 @NgModule({
