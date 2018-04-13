@@ -19,7 +19,7 @@
                                     <li class="divider"></li>
                                     <li><a href="#">Alterar Status</a></li>
                                     <li><a href="#">Comentar</a></li>
-
+                                    <li><a href="#">Transferir</a></li>
                                 </ul>
                                 <button (click)="finalizeRequest(request)" class="btn btn-danger">Finalizar</button>
                                 <button class="btn">Cancelar</button>
@@ -35,10 +35,50 @@
                                 <p>{{request.user.name}}</p>
                                 <p>{{request.description}}</p>
                             </div>
-                            <div class="card-footer">
-                                <button class="btn btn-success btn-sm pull-right">Alterar status</button>
-                            </div>
+                          <div class="card-footer">
+                            <button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Alterar status</button>
+                          </div>
                         </div>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="exampleModalLabel">Novo status para a solicitação</h4>
+                              </div>
+                              <div class="modal-body">
+                                <form [formGroup]="statusForm" novalidate>
+                                  <div class="form-group form-black">
+                                    <label class="control-label center-block">Status:
+                                      <select name="" id="" class="form-control" formControlName="status_id" >
+                                        <option selected >Selecione ...</option>
+                                        <option *ngFor="let statu of status" [value]="statu.id">{{statu.name}} => {{statu.description}}</option>
+                                      </select>
+                                    </label>
+                                  </div>
+                                  <div class="form-group form-black">
+                                    <label for="message-text" class="control-label">Observação:</label>
+                                    <textarea class="form-control" id="message-text" formControlName="observation"></textarea>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-instagram" [disabled]="statusForm.invalid" (click)="defineStatus(statusForm.value)">Salvar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      <div class="card" *ngFor="let status of statusRequest; let i = index" >
+                        <div class="card-content">
+                          <h6>Status # {{ statusRequest.length - i }}</h6>
+                          <p><label for="message-text" class="control-label">Nome:</label> {{status.name}}</p>
+                          <p><label for="message-text" class="control-label">Descrição:</label> {{status.description}}</p>
+                          <p><label for="message-text" class="control-label">Observação:</label> {{status.observation}}</p>
+                          <span class="help-block pull-right">{{status.created_at}}</span>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-5">
                         <div class="card">

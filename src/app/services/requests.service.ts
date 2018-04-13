@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {URL_API} from '../app.api';
 import {RequestItem} from '../requests/request-item.model';
 import {Request} from '../request-detail/request.model';
+import {StatusRequest} from '../request-detail/status-request.model';
 
 
 @Injectable()
@@ -40,5 +41,13 @@ export class RequestsService {
 
     myRequests(): Observable<RequestItem>{
         return this.http.get<RequestItem>(`${URL_API}/attendants/my-requests`)
+    }
+
+    getStatusRequest(id: string): Observable<StatusRequest[]> {
+        return this.http.get<StatusRequest[]>(`${URL_API}/requests/status/${id}`)
+    }
+
+    setStatus(status: any): Observable<any>{
+        return this.http.post<any>(`${URL_API}/requests/define/status`, status)
     }
 }

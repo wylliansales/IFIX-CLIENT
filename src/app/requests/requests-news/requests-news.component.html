@@ -1,6 +1,8 @@
-<app-requests-list [requestItems]="requestItems" (meet)="meet($event)"></app-requests-list>
-<div *ngIf="!(requestItems.length > 0)">
-    <p class="lead text-center">
-        Não foram encontrados itens para sua busca.
-    </p>
+<div class="col-lg-12 col-md-12">
+  <app-requests-list [requestItems]="requestItems" (meet)="meet($event)"></app-requests-list>
+  <div *ngIf="!(requestItems.length > 0)">
+      <p class="lead text-center">
+          Não foram encontrados itens para sua busca.
+      </p>
+  </div>
 </div>

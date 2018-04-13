@@ -23,7 +23,7 @@
             </p>
         </td>
         <td class="td-actions text-right">
-            <button class="btn btn-default" *ngIf="!attendant.active">Ativar</button>
+            <button class="btn btn-default" *ngIf="!(attendant.active)">Ativar</button>
             <button class="btn btn-default" *ngIf="attendant.active">Desativar</button>
             <button (click)="emitEdit(attendant)" type="button" rel="tooltip" title="Edit Task"
                     class="btn btn-simple btn-xs">

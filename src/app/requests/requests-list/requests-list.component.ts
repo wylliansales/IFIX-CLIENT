@@ -30,4 +30,8 @@ export class RequestsListComponent implements OnInit {
     detailRequest(request: RequestItem){
         this.detail.emit(request);
     }
+
+  openImages(request: RequestItem){
+      alert('Operação ainda não foi implementada')
+  }
 }

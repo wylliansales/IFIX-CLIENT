@@ -19,7 +19,7 @@ export class AttendantsFormListComponent implements OnInit {
 
     }
 
-  emitDefineAttendent(user: User){
-      this.defineAttendent.emit(user)
+  emitDefineAttendant(user: User){
+      this.defineAttendant.emit(user)
   }
 }
