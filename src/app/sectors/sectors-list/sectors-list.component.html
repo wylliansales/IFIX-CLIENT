@@ -4,6 +4,7 @@
         <th>Nome</th>
         <th>Descrição</th>
         <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -11,7 +12,12 @@
 
             <td>{{sector.name}}</td>
             <td>{{sector.description}}</td>
-            <td class="td-actions text-right">
+            <td>
+              <button class="btn btn-success btn-sm small">
+                Adicionar equipamento
+              </button>
+            </td>
+            <td class="td-actions pull-right">
 
             <button (click)="emitEdit(sector)" type="button" rel="tooltip" title="Edit Task"
                     class="btn btn-simple btn-xs">
@@ -21,6 +27,7 @@
                     class="btn btn-danger btn-simple btn-xs">
                 <i class="material-icons">close</i>
             </button>
+
         </td>
     </tr>
     </tbody>

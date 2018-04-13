@@ -1,51 +1,8 @@
+
     <div class="col-md-12">
-      <div class="row">
-        <form [formGroup]="searchForm">
-        <div class="col-xs-12 search-bar" >
-          <div class="form-group">
-            <input #search type="text"
-                   class="form-control" formControlName="search" placeholder="Buscar Usuário já cadastrado">
-          </div>
-        </div>
-        </form>
-      </div>
-    </div>
-    <div class="col-md-12">
-      <ul class="list-group">
-        <li class="list-group-item">Cras justo odio
-          <button class="btn btn-instagram btn-sm pull-right">Definir como Atendente</button>
+      <ul class="list-group" *ngFor="let user of users">
+        <li class="list-group-item">{{user.name}}
+          <button class="btn btn-instagram btn-sm pull-right" (click)="emitDefineAttendent(user)">Definir como Atendente</button>
         </li>
-      </ul>
-      <ul class="list-group">
-        <div>
-          <li class="list-group-item">Cras justo odio
-            <button class="btn btn-instagram btn-sm pull-right">Definir como Atendente
-            </button>
-          </li>
-        </div>
-      </ul>
-      <ul class="list-group">
-        <div>
-          <li class="list-group-item">Cras justo odio
-            <button class="btn btn-instagram btn-sm pull-right">Definir como Atendente
-            </button>
-          </li>
-        </div>
-      </ul>
-      <ul class="list-group">
-        <div>
-          <li class="list-group-item">Cras justo odio
-            <button class="btn btn-instagram btn-sm pull-right">Definir como Atendente
-            </button>
-          </li>
-        </div>
-      </ul>
-      <ul class="list-group">
-        <div>
-          <li class="list-group-item">Cras justo odio
-            <button class="btn btn-instagram btn-sm pull-right">Definir como Atendente
-            </button>
-          </li>
-        </div>
       </ul>
     </div>

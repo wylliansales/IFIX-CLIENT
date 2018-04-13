@@ -5,5 +5,6 @@ export interface Attendant{
     name: string
     email: string
     coordinator: boolean
+    active: boolean
     departments: Department[]
 }

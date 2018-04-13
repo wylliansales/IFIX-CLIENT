@@ -4,7 +4,10 @@ import {Router} from '@angular/router';
 import {DepartmentsService} from '../services/departments.service';
 import {NotificationsService} from '../services/notifications.service';
 
-import {Subject} from 'rxjs/Subject'
+import {Subject} from 'rxjs/Subject';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 import {Department} from './department.model';
 
@@ -19,7 +22,7 @@ export class DepartmentsComponent implements OnInit {
     back: number = 1
     next: number = 2
     pag: number = 1
-    private searchDepartment = new Subject<string>() 
+    private searchDepartment$ = new Subject<string>()
 
     constructor(private departmentsService: DepartmentsService,
                 private notificationsService: NotificationsService,
@@ -32,6 +35,16 @@ export class DepartmentsComponent implements OnInit {
                 this.meta = response['meta']
             }
         );
+        this.searchDepartment$
+          .debounceTime(300)
+          .distinctUntilChanged()
+          .switchMap( term => this.departmentsService.searchDepartments(term)).subscribe( response => {
+          this.departments = response['data']
+        })
+    }
+
+    search(term: string){
+      this.searchDepartment$.next(term)
     }
 
     delete(department: Department) {

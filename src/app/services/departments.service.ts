@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 
 import {URL_API} from '../app.api';
 import {Department} from '../departments/department.model';
+import {Sector} from '../sectors/sector.model';
 
 
 @Injectable()
@@ -26,6 +27,10 @@ export class DepartmentsService{
 
     getDepartmentById(id: number): Observable<Department>{
         return this.http.get<Department>(`${URL_API}/departments/${id}`)
+    }
+
+    searchDepartments(term: any): Observable<Department[]>{
+        return this.http.get<Department[]>(`${URL_API}/departments?search=${term}`)
     }
 
     deleteDepartment(department: Department | number): Observable<Department> {

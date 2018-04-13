@@ -12,7 +12,7 @@ import { AttendantsFormListComponent } from './attendants-form-list/attendants-f
 
 const ROUTES: Routes = [
     {path: '', component: AttendantsComponent},
-    {path: 'new', component: AttendantsNewComponent}
+    {path: 'new', component: AttendantsNewComponent},
 ]
 
 @NgModule({

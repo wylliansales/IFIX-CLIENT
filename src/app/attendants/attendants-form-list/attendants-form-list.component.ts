@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+
+import {User} from '../../users/user.model';
 
 @Component({
     selector: 'app-attendants-form-list',
@@ -8,15 +9,17 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class AttendantsFormListComponent implements OnInit {
 
-    searchForm: FormGroup
+    @Input() users: User[]
+    @Output() defineAttendant = new EventEmitter<User>()
 
-    constructor(private fb: FormBuilder) {
+    constructor() {
     }
 
     ngOnInit() {
-        this.searchForm = this.fb.group({
-                search: this.fb.control('')
-            })
+
     }
 
+  emitDefineAttendent(user: User){
+      this.defineAttendent.emit(user)
+  }
 }

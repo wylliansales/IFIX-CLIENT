@@ -22,6 +22,10 @@ export class AttendantsService{
         return this.http.post<any>(`${URL_API}/attendants`, attendant)
     }
 
+  searchAttendant(term: any): Observable<Attendant[]>{
+        return this.http.get<Attendant[]>(`${URL_API}/attendants?search=${term}`)
+  }
+
     getAttendantById(search: string){
 
     }

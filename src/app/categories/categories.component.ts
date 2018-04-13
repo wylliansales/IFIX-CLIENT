@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
-import {NotificationsService} from '../services/notifications.service';
-import {Category} from './category.model';
-import {CategoriesService} from '../services/categories.service';
 import {Router} from '@angular/router';
 
+import {NotificationsService} from '../services/notifications.service';
+import {CategoriesService} from '../services/categories.service';
+
+import {Subject} from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime'
+import 'rxjs/add/operator/switchMap'
+import 'rxjs/add/operator/distinctUntilChanged'
+
+import {Category} from './category.model';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -16,6 +21,7 @@ export class CategoriesComponent implements OnInit {
     meta: Meta
     back: number = 1
     next: number = 2
+    searchCategory$ = new Subject<string>()
 
     constructor(private categoriesService: CategoriesService,
                 private notificationsService: NotificationsService,
@@ -28,6 +34,17 @@ export class CategoriesComponent implements OnInit {
                 this.meta = response['meta'];
             }
         );
+
+        this.searchCategory$
+          .debounceTime(300)
+          .distinctUntilChanged()
+          .switchMap( term => this.categoriesService.searchCategory(term))
+          .subscribe( response => {this.categories = response['data']})
+    }
+
+    search(term: string){
+      console.log(term)
+      this.searchCategory$.next(term)
     }
 
     delete(category: Category) {

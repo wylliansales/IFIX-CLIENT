@@ -23,6 +23,10 @@ export class UsersService {
         return this.http.get<User[]>(`${URL_API}/users/released`);
     }
 
+    searchUser(term: any): Observable<User[]>{
+        return this.http.get<User[]>(`${URL_API}/users?search=${term}`)
+    }
+
     releaseUser(user: User): Observable<any>{
         return this.http.put(`${URL_API}/users/release/${user.id}`, user);
     }

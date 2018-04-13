@@ -29,6 +29,10 @@ export class CategoriesService{
         return this.http.get<Category>(`${URL_API}/categories/${id}`)
     }
 
+    searchCategory(term: any): Observable<Category[]>{
+      return this.http.get<Category[]>(`${URL_API}/categories?search=${term}`)
+    }
+
     deleteCategory(category: Category | number): Observable<Category> {
         const id = typeof category === 'number' ? category : category.id;
         return this.http.delete<Category>(`${URL_API}/categories/${id}`)

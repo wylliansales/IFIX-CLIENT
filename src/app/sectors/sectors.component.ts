@@ -6,7 +6,7 @@ import {NotificationsService} from '../services/notifications.service';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import {Observable} from 'rxjs/Observable';
+
 
 import {Sector} from './sector.model';
 import {Subject} from 'rxjs/Subject';
